@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         let name = "Arif Rahman"
         let strAs : String = "bro"
         
+        let team = "Electricator"
         print(strAs)
         print(str)
 
