@@ -15,6 +15,10 @@
 		6A421A7C26147B9F00BACF6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A421A7A26147B9F00BACF6A /* LaunchScreen.storyboard */; };
 		6A421A8726147BA000BACF6A /* ElectricatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A421A8626147BA000BACF6A /* ElectricatorTests.swift */; };
 		6A421A9226147BA000BACF6A /* ElectricatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A421A9126147BA000BACF6A /* ElectricatorUITests.swift */; };
+		7D020B772618592700AF84C5 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B762618592700AF84C5 /* CoreDataTests.swift */; };
+		7D020B7D261859BA00AF84C5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */; };
+		7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */; };
+		7D020B95261878B100AF84C5 /* HouseData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,9 @@
 		6A421A8D26147BA000BACF6A /* ElectricatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElectricatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A421A9126147BA000BACF6A /* ElectricatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricatorUITests.swift; sourceTree = "<group>"; };
 		6A421A9326147BA000BACF6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D020B762618592700AF84C5 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		7D020B902618788700AF84C5 /* HouseData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HouseData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +106,12 @@
 		6A421A6E26147B9F00BACF6A /* Electricator */ = {
 			isa = PBXGroup;
 			children = (
-				6A421A6F26147B9F00BACF6A /* AppDelegate.swift */,
-				6A421A7126147B9F00BACF6A /* SceneDelegate.swift */,
-				6A421A7326147B9F00BACF6A /* ViewController.swift */,
-				6A421A7526147B9F00BACF6A /* Main.storyboard */,
+				7D020B7B261859B100AF84C5 /* Helper */,
+				7D020B66261841C900AF84C5 /* CoreData */,
+				7D020BA42618955400AF84C5 /* Application */,
+				7D020BA02618954900AF84C5 /* Controller */,
+				7D020B9F2618954200AF84C5 /* View */,
 				6A421A7826147B9F00BACF6A /* Assets.xcassets */,
-				6A421A7A26147B9F00BACF6A /* LaunchScreen.storyboard */,
 				6A421A7D26147B9F00BACF6A /* Info.plist */,
 			);
 			path = Electricator;
@@ -115,6 +122,7 @@
 			children = (
 				6A421A8626147BA000BACF6A /* ElectricatorTests.swift */,
 				6A421A8826147BA000BACF6A /* Info.plist */,
+				7D020B762618592700AF84C5 /* CoreDataTests.swift */,
 			);
 			path = ElectricatorTests;
 			sourceTree = "<group>";
@@ -126,6 +134,48 @@
 				6A421A9326147BA000BACF6A /* Info.plist */,
 			);
 			path = ElectricatorUITests;
+			sourceTree = "<group>";
+		};
+		7D020B66261841C900AF84C5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7D020B7B261859B100AF84C5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		7D020B9F2618954200AF84C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A421A7526147B9F00BACF6A /* Main.storyboard */,
+				6A421A7A26147B9F00BACF6A /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D020BA02618954900AF84C5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6A421A7326147B9F00BACF6A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7D020BA42618955400AF84C5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				6A421A6F26147B9F00BACF6A /* AppDelegate.swift */,
+				6A421A7126147B9F00BACF6A /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +311,8 @@
 				6A421A7426147B9F00BACF6A /* ViewController.swift in Sources */,
 				6A421A7026147B9F00BACF6A /* AppDelegate.swift in Sources */,
 				6A421A7226147B9F00BACF6A /* SceneDelegate.swift in Sources */,
+				7D020B7D261859BA00AF84C5 /* CoreDataManager.swift in Sources */,
+				7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D020B95261878B100AF84C5 /* HouseData.xcdatamodeld in Sources */,
+				7D020B772618592700AF84C5 /* CoreDataTests.swift in Sources */,
 				6A421A8726147BA000BACF6A /* ElectricatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +647,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7D020B902618788700AF84C5 /* HouseData.xcdatamodel */,
+			);
+			currentVersion = 7D020B902618788700AF84C5 /* HouseData.xcdatamodel */;
+			path = HouseData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6A421A6426147B9F00BACF6A /* Project object */;
 }

@@ -15,9 +15,12 @@ class ViewController: UIViewController {
         let name = "Arif Rahman"
         let strAs : String = "bro"
         
+        let abs = 1 + 2
+        
+        let team = "Electricator"
         print(strAs)
         print(str)
-
+        print(abs)
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
