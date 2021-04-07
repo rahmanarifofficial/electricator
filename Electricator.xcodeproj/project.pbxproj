@@ -19,6 +19,11 @@
 		7D020B7D261859BA00AF84C5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */; };
 		7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */; };
 		7D020B95261878B100AF84C5 /* HouseData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */; };
+		7D99B61D261D879C00A9E2E2 /* AddAppliance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D99B61C261D879C00A9E2E2 /* AddAppliance.storyboard */; };
+		7D99B625261D87AD00A9E2E2 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B622261D87AD00A9E2E2 /* CategoryListViewController.swift */; };
+		7D99B626261D87AD00A9E2E2 /* RepeatDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B623261D87AD00A9E2E2 /* RepeatDayViewController.swift */; };
+		7D99B627261D87AD00A9E2E2 /* AddApplianceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B624261D87AD00A9E2E2 /* AddApplianceViewController.swift */; };
+		7D99B62D261D87B200A9E2E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B62C261D87B200A9E2E2 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,11 @@
 		7D020B762618592700AF84C5 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7D020B902618788700AF84C5 /* HouseData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HouseData.xcdatamodel; sourceTree = "<group>"; };
+		7D99B61C261D879C00A9E2E2 /* AddAppliance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAppliance.storyboard; sourceTree = "<group>"; };
+		7D99B622261D87AD00A9E2E2 /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		7D99B623261D87AD00A9E2E2 /* RepeatDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDayViewController.swift; sourceTree = "<group>"; };
+		7D99B624261D87AD00A9E2E2 /* AddApplianceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddApplianceViewController.swift; sourceTree = "<group>"; };
+		7D99B62C261D87B200A9E2E2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,7 @@
 		6A421A6E26147B9F00BACF6A /* Electricator */ = {
 			isa = PBXGroup;
 			children = (
+				7D99B62B261D87B200A9E2E2 /* Utils */,
 				7D020B7B261859B100AF84C5 /* Helper */,
 				7D020B66261841C900AF84C5 /* CoreData */,
 				7D020BA42618955400AF84C5 /* Application */,
@@ -155,6 +166,7 @@
 		7D020B9F2618954200AF84C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7D99B61C261D879C00A9E2E2 /* AddAppliance.storyboard */,
 				6A421A7526147B9F00BACF6A /* Main.storyboard */,
 				6A421A7A26147B9F00BACF6A /* LaunchScreen.storyboard */,
 			);
@@ -164,6 +176,7 @@
 		7D020BA02618954900AF84C5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7D99B621261D87AD00A9E2E2 /* Add Appliance */,
 				6A421A7326147B9F00BACF6A /* PlanViewController.swift */,
 			);
 			path = Controller;
@@ -176,6 +189,24 @@
 				6A421A7126147B9F00BACF6A /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7D99B621261D87AD00A9E2E2 /* Add Appliance */ = {
+			isa = PBXGroup;
+			children = (
+				7D99B622261D87AD00A9E2E2 /* CategoryListViewController.swift */,
+				7D99B623261D87AD00A9E2E2 /* RepeatDayViewController.swift */,
+				7D99B624261D87AD00A9E2E2 /* AddApplianceViewController.swift */,
+			);
+			path = "Add Appliance";
+			sourceTree = "<group>";
+		};
+		7D99B62B261D87B200A9E2E2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7D99B62C261D87B200A9E2E2 /* Constants.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D99B61D261D879C00A9E2E2 /* AddAppliance.storyboard in Resources */,
 				6A421A7C26147B9F00BACF6A /* LaunchScreen.storyboard in Resources */,
 				6A421A7926147B9F00BACF6A /* Assets.xcassets in Resources */,
 				6A421A7726147B9F00BACF6A /* Main.storyboard in Resources */,
@@ -308,11 +340,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D99B627261D87AD00A9E2E2 /* AddApplianceViewController.swift in Sources */,
 				6A421A7426147B9F00BACF6A /* PlanViewController.swift in Sources */,
 				6A421A7026147B9F00BACF6A /* AppDelegate.swift in Sources */,
+				7D99B625261D87AD00A9E2E2 /* CategoryListViewController.swift in Sources */,
 				6A421A7226147B9F00BACF6A /* SceneDelegate.swift in Sources */,
 				7D020B7D261859BA00AF84C5 /* CoreDataManager.swift in Sources */,
 				7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */,
+				7D99B626261D87AD00A9E2E2 /* RepeatDayViewController.swift in Sources */,
+				7D99B62D261D87B200A9E2E2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
