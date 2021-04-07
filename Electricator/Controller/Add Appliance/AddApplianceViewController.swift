@@ -18,10 +18,12 @@ class AddApplianceViewController: UIViewController, UITableViewDelegate {
     
     var unit = 1
     var chosenDuration = [
-        "hour": -1,
-        "minute": -1
+        "hour": 0,
+        "minute": 0
     ]
     var repeatDay = [String]()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

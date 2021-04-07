@@ -24,6 +24,11 @@
 		7D99B626261D87AD00A9E2E2 /* RepeatDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B623261D87AD00A9E2E2 /* RepeatDayViewController.swift */; };
 		7D99B627261D87AD00A9E2E2 /* AddApplianceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B624261D87AD00A9E2E2 /* AddApplianceViewController.swift */; };
 		7D99B62D261D87B200A9E2E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B62C261D87B200A9E2E2 /* Constants.swift */; };
+		7D99B634261DFC8000A9E2E2 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D99B633261DFC8000A9E2E2 /* Onboarding.storyboard */; };
+		7D99B63B261DFCE900A9E2E2 /* FirstSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B639261DFCE900A9E2E2 /* FirstSetupViewController.swift */; };
+		7D99B63C261DFCE900A9E2E2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B63A261DFCE900A9E2E2 /* OnboardingViewController.swift */; };
+		7D99B642261DFD4900A9E2E2 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B641261DFD4900A9E2E2 /* UIColor+RGB.swift */; };
+		7D99B650261E02C400A9E2E2 /* FirstLaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B64F261E02C400A9E2E2 /* FirstLaunchManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		7D99B623261D87AD00A9E2E2 /* RepeatDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDayViewController.swift; sourceTree = "<group>"; };
 		7D99B624261D87AD00A9E2E2 /* AddApplianceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddApplianceViewController.swift; sourceTree = "<group>"; };
 		7D99B62C261D87B200A9E2E2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7D99B633261DFC8000A9E2E2 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		7D99B639261DFCE900A9E2E2 /* FirstSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstSetupViewController.swift; sourceTree = "<group>"; };
+		7D99B63A261DFCE900A9E2E2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		7D99B641261DFD4900A9E2E2 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		7D99B64F261E02C400A9E2E2 /* FirstLaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +126,7 @@
 		6A421A6E26147B9F00BACF6A /* Electricator */ = {
 			isa = PBXGroup;
 			children = (
+				7D99B640261DFD3500A9E2E2 /* Extension */,
 				7D99B62B261D87B200A9E2E2 /* Utils */,
 				7D020B7B261859B100AF84C5 /* Helper */,
 				7D020B66261841C900AF84C5 /* CoreData */,
@@ -159,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */,
+				7D99B64F261E02C400A9E2E2 /* FirstLaunchManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -166,6 +178,7 @@
 		7D020B9F2618954200AF84C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7D99B633261DFC8000A9E2E2 /* Onboarding.storyboard */,
 				7D99B61C261D879C00A9E2E2 /* AddAppliance.storyboard */,
 				6A421A7526147B9F00BACF6A /* Main.storyboard */,
 				6A421A7A26147B9F00BACF6A /* LaunchScreen.storyboard */,
@@ -176,6 +189,7 @@
 		7D020BA02618954900AF84C5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7D99B638261DFCD900A9E2E2 /* Onboarding */,
 				7D99B621261D87AD00A9E2E2 /* Add Appliance */,
 				6A421A7326147B9F00BACF6A /* PlanViewController.swift */,
 			);
@@ -207,6 +221,23 @@
 				7D99B62C261D87B200A9E2E2 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7D99B638261DFCD900A9E2E2 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				7D99B639261DFCE900A9E2E2 /* FirstSetupViewController.swift */,
+				7D99B63A261DFCE900A9E2E2 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		7D99B640261DFD3500A9E2E2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7D99B641261DFD4900A9E2E2 /* UIColor+RGB.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D99B61D261D879C00A9E2E2 /* AddAppliance.storyboard in Resources */,
+				7D99B634261DFC8000A9E2E2 /* Onboarding.storyboard in Resources */,
 				6A421A7C26147B9F00BACF6A /* LaunchScreen.storyboard in Resources */,
 				6A421A7926147B9F00BACF6A /* Assets.xcassets in Resources */,
 				6A421A7726147B9F00BACF6A /* Main.storyboard in Resources */,
@@ -344,11 +376,15 @@
 				6A421A7426147B9F00BACF6A /* PlanViewController.swift in Sources */,
 				6A421A7026147B9F00BACF6A /* AppDelegate.swift in Sources */,
 				7D99B625261D87AD00A9E2E2 /* CategoryListViewController.swift in Sources */,
+				7D99B63C261DFCE900A9E2E2 /* OnboardingViewController.swift in Sources */,
 				6A421A7226147B9F00BACF6A /* SceneDelegate.swift in Sources */,
 				7D020B7D261859BA00AF84C5 /* CoreDataManager.swift in Sources */,
 				7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */,
 				7D99B626261D87AD00A9E2E2 /* RepeatDayViewController.swift in Sources */,
+				7D99B642261DFD4900A9E2E2 /* UIColor+RGB.swift in Sources */,
 				7D99B62D261D87B200A9E2E2 /* Constants.swift in Sources */,
+				7D99B63B261DFCE900A9E2E2 /* FirstSetupViewController.swift in Sources */,
+				7D99B650261E02C400A9E2E2 /* FirstLaunchManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
