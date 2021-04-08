@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddApplianceControllerDelegate {
+    func dismiss()
+}
+
 class AddApplianceViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
@@ -23,7 +27,7 @@ class AddApplianceViewController: UIViewController, UITableViewDelegate {
     ]
     var repeatDay = [String]()
     
-    
+    var delegate: AddApplianceControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +94,7 @@ class AddApplianceViewController: UIViewController, UITableViewDelegate {
     }
     
     @objc func closeButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
+        self.delegate?.dismiss()
     }
     
     @objc func saveButtonTapped() {
@@ -103,7 +107,8 @@ class AddApplianceViewController: UIViewController, UITableViewDelegate {
         
         
         _ = CoreDataManager.manager.insertAppliance(name: name, category: category, type: type, power: power, quantity: quantity, duration: duration, repeatDay: repeatDay)
-        self.dismiss(animated: true, completion: nil)
+        
+        self.delegate?.dismiss()
     }
     
     @IBAction func quantityStepperValueChanged(sender: UIStepper) {
