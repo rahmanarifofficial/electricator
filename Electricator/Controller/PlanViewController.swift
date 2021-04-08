@@ -19,8 +19,22 @@ class PlanViewController: UIViewController {
     }
     
     private func setupView(){
-        emptyView.isHidden = false
-        applianceTableView.isHidden = true
+        /*if dataIsExist() {
+            emptyView.isHidden = true
+            applianceTableView.isHidden = false
+        }else{*/
+            emptyView.isHidden = false
+            applianceTableView.isHidden = true
+        //}
+    }
+    
+    private func dataIsExist() -> Bool {
+        let a = CoreDataManager.manager.fetchAppliances()
+        if a.isEmpty {
+            return false
+        }else{
+            return true
+        }
     }
 }
 
