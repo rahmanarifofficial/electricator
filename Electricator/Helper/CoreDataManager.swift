@@ -108,6 +108,14 @@ class CoreDataManager {
         try? context.save()
     }
     
+    func setApplianceConservation(for appliance: Appliance, toConserve conserve: Bool) {
+        let context = CoreDataManager.manager.persistentContainer.viewContext
+        
+        appliance.conserve = conserve
+        
+        try? context.save()
+    }
+    
     func fetchAppliances() -> [Appliance] {
         let context = CoreDataManager.manager.persistentContainer.viewContext
         
@@ -122,6 +130,8 @@ class CoreDataManager {
     func deleteAppliance(appliance: Appliance) {
         let context = CoreDataManager.manager.persistentContainer.viewContext
         context.delete(appliance)
+        
+        try? context.save()
     }
     
     func flushHouse() {
