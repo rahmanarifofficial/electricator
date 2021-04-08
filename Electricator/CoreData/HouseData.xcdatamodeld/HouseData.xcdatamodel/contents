@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Appliance" representedClassName="Appliance" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
-        <attribute name="conserve" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="conserve" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="power" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
