@@ -75,7 +75,7 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         let appliance = self.listAppliance[indexPath.row]
         cell.textNameAppliance.text = appliance.name
         cell.textQuantityAppliance.text = String("\(appliance.quantity) Unit")
-        cell.textHourAppliance.text = String("\(appliance.duration)")
+        cell.textHourAppliance.text = String("\(appliance.duration / 3600)h")
         cell.lockHourViewAppliance.isHidden = true
         return cell
     }
