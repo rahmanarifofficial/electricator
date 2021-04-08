@@ -46,9 +46,6 @@ class ApplianceListViewController: UIViewController {
         let noAppliances = appliances.isEmpty
         let noConservedAppliances = unconservedAppliances.isEmpty
         
-        print("Appliances: \(noAppliances)")
-        print("Non conserve: \(noConservedAppliances)")
-        
         appliancesContainer.isHidden = noAppliances && noConservedAppliances
         conservedAppliancesContainer.isHidden = noConservedAppliances
         noApplianceImage.isHidden = !(noAppliances && noConservedAppliances)
@@ -57,7 +54,6 @@ class ApplianceListViewController: UIViewController {
     }
     
     func fetchAppliance() {
-        print("Fetching data..")
         let fetchedAppliances = CoreDataManager.manager.fetchAppliances()
         
         appliances = fetchedAppliances.filter({ appliance in

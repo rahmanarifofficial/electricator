@@ -15,7 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             if !FirstLaunchManager.shared.isFirstLaunch {
-                print("First launch bro")
                 let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "OnboardingNavController")
 
