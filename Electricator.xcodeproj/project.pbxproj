@@ -11,7 +11,6 @@
 		3B6765A8261EEB1500950EA5 /* DetailAppliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6765A7261EEB1500950EA5 /* DetailAppliance.swift */; };
 		6A421A7026147B9F00BACF6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A421A6F26147B9F00BACF6A /* AppDelegate.swift */; };
 		6A421A7226147B9F00BACF6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A421A7126147B9F00BACF6A /* SceneDelegate.swift */; };
-		6A421A7426147B9F00BACF6A /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A421A7326147B9F00BACF6A /* PlanViewController.swift */; };
 		6A421A7726147B9F00BACF6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A421A7526147B9F00BACF6A /* Main.storyboard */; };
 		6A421A7926147B9F00BACF6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A421A7826147B9F00BACF6A /* Assets.xcassets */; };
 		6A421A7C26147B9F00BACF6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A421A7A26147B9F00BACF6A /* LaunchScreen.storyboard */; };
@@ -25,6 +24,7 @@
 		7D020B95261878B100AF84C5 /* HouseData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */; };
 		7D4CA100261EF9350028AA2E /* AppliancesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CA0FF261EF9350028AA2E /* AppliancesTableViewController.swift */; };
 		7D4CA105261F06F90028AA2E /* UnconservedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CA104261F06F90028AA2E /* UnconservedTableViewController.swift */; };
+		7D4CA14F261F6B3B0028AA2E /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CA14E261F6B3B0028AA2E /* PlanViewController.swift */; };
 		7D99B61D261D879C00A9E2E2 /* AddAppliance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D99B61C261D879C00A9E2E2 /* AddAppliance.storyboard */; };
 		7D99B625261D87AD00A9E2E2 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B622261D87AD00A9E2E2 /* CategoryListViewController.swift */; };
 		7D99B626261D87AD00A9E2E2 /* RepeatDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99B623261D87AD00A9E2E2 /* RepeatDayViewController.swift */; };
@@ -61,7 +61,6 @@
 		6A421A6C26147B9F00BACF6A /* Electricator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Electricator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A421A6F26147B9F00BACF6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A421A7126147B9F00BACF6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6A421A7326147B9F00BACF6A /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		6A421A7626147B9F00BACF6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A421A7826147B9F00BACF6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A421A7B26147B9F00BACF6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		7D020B902618788700AF84C5 /* HouseData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HouseData.xcdatamodel; sourceTree = "<group>"; };
 		7D4CA0FF261EF9350028AA2E /* AppliancesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliancesTableViewController.swift; sourceTree = "<group>"; };
 		7D4CA104261F06F90028AA2E /* UnconservedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnconservedTableViewController.swift; sourceTree = "<group>"; };
+		7D4CA14E261F6B3B0028AA2E /* PlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		7D99B61C261D879C00A9E2E2 /* AddAppliance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAppliance.storyboard; sourceTree = "<group>"; };
 		7D99B622261D87AD00A9E2E2 /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		7D99B623261D87AD00A9E2E2 /* RepeatDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDayViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		6AB6B590261F61B70094B6CF /* MyPlan */ = {
 			isa = PBXGroup;
 			children = (
-				6A421A7326147B9F00BACF6A /* PlanViewController.swift */,
+				7D4CA14E261F6B3B0028AA2E /* PlanViewController.swift */,
 				6AB6B580261EED3B0094B6CF /* ApplianceTableViewCell.swift */,
 			);
 			path = MyPlan;
@@ -216,7 +216,6 @@
 				6AB6B590261F61B70094B6CF /* MyPlan */,
 				7D99B638261DFCD900A9E2E2 /* Onboarding */,
 				7D99B621261D87AD00A9E2E2 /* Add Appliance */,
-				6A421A7326147B9F00BACF6A /* PlanViewController.swift */,
 				7D4CA109261F07000028AA2E /* Appliance List */,
 				3B399799261F00330010CD07 /* DetailEdit.swift */,
 				3B6765A7261EEB1500950EA5 /* DetailAppliance.swift */,
@@ -413,7 +412,6 @@
 			files = (
 				7D99B627261D87AD00A9E2E2 /* AddApplianceViewController.swift in Sources */,
 				7D4CA105261F06F90028AA2E /* UnconservedTableViewController.swift in Sources */,
-				6A421A7426147B9F00BACF6A /* PlanViewController.swift in Sources */,
 				6A421A7026147B9F00BACF6A /* AppDelegate.swift in Sources */,
 				7D99B625261D87AD00A9E2E2 /* CategoryListViewController.swift in Sources */,
 				3B6765A8261EEB1500950EA5 /* DetailAppliance.swift in Sources */,
@@ -426,6 +424,7 @@
 				7D4CA100261EF9350028AA2E /* AppliancesTableViewController.swift in Sources */,
 				7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */,
 				7D99B626261D87AD00A9E2E2 /* RepeatDayViewController.swift in Sources */,
+				7D4CA14F261F6B3B0028AA2E /* PlanViewController.swift in Sources */,
 				7D99B642261DFD4900A9E2E2 /* UIColor+RGB.swift in Sources */,
 				7D99B62D261D87B200A9E2E2 /* Constants.swift in Sources */,
 				7D99B63B261DFCE900A9E2E2 /* FirstSetupViewController.swift in Sources */,
