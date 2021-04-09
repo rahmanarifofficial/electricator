@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B39979A261F00330010CD07 /* DetailEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B399799261F00330010CD07 /* DetailEdit.swift */; };
+		3B3997BA26203C5D0010CD07 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3997B926203C5D0010CD07 /* SettingViewController.swift */; };
 		3B6765A8261EEB1500950EA5 /* DetailAppliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6765A7261EEB1500950EA5 /* DetailAppliance.swift */; };
 		6A421A7026147B9F00BACF6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A421A6F26147B9F00BACF6A /* AppDelegate.swift */; };
 		6A421A7226147B9F00BACF6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A421A7126147B9F00BACF6A /* SceneDelegate.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		3B399799261F00330010CD07 /* DetailEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEdit.swift; sourceTree = "<group>"; };
+		3B3997B926203C5D0010CD07 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3B6765A7261EEB1500950EA5 /* DetailAppliance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAppliance.swift; sourceTree = "<group>"; };
 		6A421A6C26147B9F00BACF6A /* Electricator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Electricator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A421A6F26147B9F00BACF6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				7D4CA109261F07000028AA2E /* Appliance List */,
 				3B399799261F00330010CD07 /* DetailEdit.swift */,
 				3B6765A7261EEB1500950EA5 /* DetailAppliance.swift */,
+				3B3997B926203C5D0010CD07 /* SettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */,
 				7D99B626261D87AD00A9E2E2 /* RepeatDayViewController.swift in Sources */,
 				7D4CA14F261F6B3B0028AA2E /* PlanViewController.swift in Sources */,
+				3B3997BA26203C5D0010CD07 /* SettingViewController.swift in Sources */,
 				7D99B642261DFD4900A9E2E2 /* UIColor+RGB.swift in Sources */,
 				7D99B62D261D87B200A9E2E2 /* Constants.swift in Sources */,
 				7D99B63B261DFCE900A9E2E2 /* FirstSetupViewController.swift in Sources */,
