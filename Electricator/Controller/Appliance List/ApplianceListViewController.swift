@@ -41,7 +41,7 @@ class ApplianceListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetchAppliance()
+        updateTable()
         checkForGuidestoShow()
         
         navigationController?.navigationBar.isHidden = true

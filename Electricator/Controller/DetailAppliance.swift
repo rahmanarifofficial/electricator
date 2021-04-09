@@ -21,6 +21,8 @@ class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var detailsRowAppliance = ["Appliance Category", "Type", "Power", "Appliance Name", "Quantity"]
     
+    var detailsChanged = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,7 +54,9 @@ class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ApplianceEditSegue" {
-            (segue.destination as? DetailEdit)?.appliance = appliance
+            let destination = segue.destination as? DetailEdit
+            destination?.appliance = appliance
+            destination?.delegate = self
         }
     }
     
@@ -111,5 +115,16 @@ class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         return rowCount
+    }
+}
+
+extension DetailAppliance: EditingDelegate {
+    func dismiss(appliance: Appliance) {
+        self.navigationController?.popViewController(animated: true)
+        self.appliance = appliance
+        topView.reloadData()
+        downView.reloadData()
+        
+        detailsChanged = true
     }
 }
