@@ -23,6 +23,7 @@
 		7D020B7D261859BA00AF84C5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */; };
 		7D020B912618788700AF84C5 /* HouseData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */; };
 		7D020B95261878B100AF84C5 /* HouseData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D020B8F2618788700AF84C5 /* HouseData.xcdatamodeld */; };
+		7D22E398262044A30084DB43 /* LearnMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D22E397262044A30084DB43 /* LearnMoreViewController.swift */; };
 		7D4CA100261EF9350028AA2E /* AppliancesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CA0FF261EF9350028AA2E /* AppliancesTableViewController.swift */; };
 		7D4CA105261F06F90028AA2E /* UnconservedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CA104261F06F90028AA2E /* UnconservedTableViewController.swift */; };
 		7D4CA14F261F6B3B0028AA2E /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CA14E261F6B3B0028AA2E /* PlanViewController.swift */; };
@@ -78,6 +79,7 @@
 		7D020B762618592700AF84C5 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		7D020B7C261859BA00AF84C5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7D020B902618788700AF84C5 /* HouseData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HouseData.xcdatamodel; sourceTree = "<group>"; };
+		7D22E397262044A30084DB43 /* LearnMoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnMoreViewController.swift; sourceTree = "<group>"; };
 		7D4CA0FF261EF9350028AA2E /* AppliancesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliancesTableViewController.swift; sourceTree = "<group>"; };
 		7D4CA104261F06F90028AA2E /* UnconservedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnconservedTableViewController.swift; sourceTree = "<group>"; };
 		7D4CA14E261F6B3B0028AA2E /* PlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		6AB6B590261F61B70094B6CF /* MyPlan */ = {
 			isa = PBXGroup;
 			children = (
+				7D22E397262044A30084DB43 /* LearnMoreViewController.swift */,
 				7D4CA14E261F6B3B0028AA2E /* PlanViewController.swift */,
 				6AB6B580261EED3B0094B6CF /* ApplianceTableViewCell.swift */,
 			);
@@ -420,6 +423,7 @@
 				3B6765A8261EEB1500950EA5 /* DetailAppliance.swift in Sources */,
 				7D99B63C261DFCE900A9E2E2 /* OnboardingViewController.swift in Sources */,
 				6AB6B582261EED3B0094B6CF /* ApplianceTableViewCell.swift in Sources */,
+				7D22E398262044A30084DB43 /* LearnMoreViewController.swift in Sources */,
 				6A421A7226147B9F00BACF6A /* SceneDelegate.swift in Sources */,
 				7D99B65E261E187300A9E2E2 /* ApplianceListViewController.swift in Sources */,
 				3B39979A261F00330010CD07 /* DetailEdit.swift in Sources */,
