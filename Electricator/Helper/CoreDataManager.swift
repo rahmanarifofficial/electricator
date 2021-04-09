@@ -93,21 +93,6 @@ class CoreDataManager {
         return appliance
     }
     
-    func updateAppliance(appliance: Appliance, name: String, category: String, type: String, power: Int16, quantity: Int16, duration: Int32, repeatDay: [String], conserve: Bool) {
-        let context = CoreDataManager.manager.persistentContainer.viewContext
-        
-        appliance.category = category
-        appliance.type = type
-        appliance.power = power
-        appliance.name = name
-        appliance.quantity = quantity
-        appliance.duration = duration
-        appliance.repeatDay = repeatDay
-        appliance.conserve = conserve
-        
-        try? context.save()
-    }
-    
     func setApplianceConservation(for appliance: Appliance, toConserve conserve: Bool) {
         let context = CoreDataManager.manager.persistentContainer.viewContext
         
