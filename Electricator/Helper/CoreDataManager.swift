@@ -101,6 +101,14 @@ class CoreDataManager {
         try? context.save()
     }
     
+    func setApplianceLock(for appliance: Appliance, toLock lock: Bool) {
+        let context = CoreDataManager.manager.persistentContainer.viewContext
+        
+        appliance.lock = lock
+        
+        try? context.save()
+    }
+    
     func fetchAppliances() -> [Appliance] {
         let context = CoreDataManager.manager.persistentContainer.viewContext
         

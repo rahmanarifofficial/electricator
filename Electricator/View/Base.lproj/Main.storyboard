@@ -129,6 +129,23 @@
                                 <rect key="frame" x="20" y="490" width="374" height="323"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-Sy-oPF">
+                                <rect key="frame" x="348" y="135" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="FuG-eI-lIm" kind="show" id="eUd-DE-zfF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZP-lu-AZ0">
+                                <rect key="frame" x="297" y="325" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Learn More"/>
+                                <connections>
+                                    <segue destination="aEv-32-w7e" kind="presentation" id="elM-p8-4L2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -167,6 +184,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2476.811594202899" y="-340.17857142857139"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="iHR-g6-DeE">
+            <objects>
+                <viewController id="FuG-eI-lIm" customClass="SettingViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="56E-gO-UtS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-Em-ePC">
+                                <rect key="frame" x="0.0" y="132" width="414" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notifCell" id="cYe-J2-N0Q">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cYe-J2-N0Q" id="DAC-0G-T7Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q5m-jV-EN5">
+                                <rect key="frame" x="0.0" y="206" width="414" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home Current (Power Supply)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ7-h1-em8">
+                                        <rect key="frame" x="21" y="12" width="228" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.023529411760000001" green="0.1333333333" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mce-ei-nxU">
+                                        <rect key="frame" x="275" y="5" width="119" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uHy-d9-FP2">
+                                        <rect key="frame" x="368" y="13" width="19" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YhS-dX-Rk3"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Setting" id="7yU-ql-SZW"/>
+                    <connections>
+                        <outlet property="notifView" destination="Hm1-Em-ePC" id="PEY-lC-rcb"/>
+                        <outlet property="powerField" destination="Mce-ei-nxU" id="kdg-Jg-NcO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="det-TO-XmE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3446.376811594203" y="-333.48214285714283"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2YE-1a-a2M">
@@ -779,10 +859,72 @@
             </objects>
             <point key="canvasLocation" x="3477" y="600"/>
         </scene>
+        <!--Learn More-->
+        <scene sceneID="2eU-aH-OJ2">
+            <objects>
+                <viewController id="djk-hT-wmx" customClass="LearnMoreViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x4n-4s-eJy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why up to 30% ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDU-yQ-8BG">
+                                <rect key="frame" x="20" y="79" width="252" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vyj-hf-ktc">
+                                <rect key="frame" x="20" y="133" width="360" height="61"/>
+                                <string key="text">By saving up to 30%, you can reach the optimal 
+point in saving electricity yet still comfortable 
+to carry out daily activities at home.</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y8t-MP-iSw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CDU-yQ-8BG" firstAttribute="top" secondItem="Y8t-MP-iSw" secondAttribute="top" constant="23" id="3Oj-Hk-dh1"/>
+                            <constraint firstItem="Y8t-MP-iSw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CDU-yQ-8BG" secondAttribute="trailing" symbolic="YES" id="FPg-az-wZA"/>
+                            <constraint firstItem="Y8t-MP-iSw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vyj-hf-ktc" secondAttribute="trailing" symbolic="YES" id="IqL-lm-ZDp"/>
+                            <constraint firstItem="Vyj-hf-ktc" firstAttribute="top" secondItem="CDU-yQ-8BG" secondAttribute="bottom" constant="15" id="cA0-8h-GBO"/>
+                            <constraint firstItem="Vyj-hf-ktc" firstAttribute="leading" secondItem="Y8t-MP-iSw" secondAttribute="leading" constant="20" id="cgs-Y9-qQB"/>
+                            <constraint firstItem="CDU-yQ-8BG" firstAttribute="leading" secondItem="Y8t-MP-iSw" secondAttribute="leading" constant="20" id="jOk-i8-MXM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Learn More" leftItemsSupplementBackButton="YES" id="0tM-WZ-kEe">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6Ho-bY-y7l"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="akV-zn-Wub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4383" y="-1029"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4a5-km-2ZQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aEv-32-w7e" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="87g-HS-cJp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="djk-hT-wmx" kind="relationship" relationship="rootViewController" id="6ZP-yM-2F2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gu9-xs-ezE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3446" y="-1029"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg-bill-estimation" width="382" height="146"/>
         <image name="bg-my-appliance" width="414" height="213"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="conserve-guide" width="316" height="253"/>
         <image name="ic-empty-appliance" width="328" height="211"/>
@@ -799,8 +941,14 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
