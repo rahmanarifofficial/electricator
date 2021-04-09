@@ -244,9 +244,11 @@ extension DetailEdit: CategoryDataDelegate {
 extension DetailEdit: RepeatDataDelegate {
     func passData(data: [String]) {
         repeatDay = data
-        
+    
         var result = ""
-        if data.count == 7 {
+        if data.count == 0 {
+            result = "No Repeat"
+        }else if data.count == 7 {
             result = "Everyday"
         } else if repeatDay.sorted() == ["MON", "TUE", "WED", "THU", "FRI"].sorted() {
             result = "Weekdays"
@@ -257,5 +259,6 @@ extension DetailEdit: RepeatDataDelegate {
         }
         
         repeatTextField.text = result
+        appliance?.repeatDay = repeatDay
     }
 }
