@@ -11,6 +11,7 @@ protocol ApplianceActionsDelegate {
     func conserveAppliance(at index: Int)
     func unconserveAppliance(at index: Int)
     func deleteAppliance(at index: Int)
+    func applianceTapped(at index: Int, onTable table: String)
 }
 
 class ApplianceListViewController: UIViewController {
@@ -27,6 +28,8 @@ class ApplianceListViewController: UIViewController {
     var appliances = [Appliance]()
     var unconservedAppliances = [Appliance]()
     
+    var selectedAppliance: Appliance?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +43,8 @@ class ApplianceListViewController: UIViewController {
         super.viewWillAppear(true)
         fetchAppliance()
         checkForGuidestoShow()
+        
+        navigationController?.navigationBar.isHidden = true
     }
     
     func checkForGuidestoShow() {
@@ -93,6 +98,9 @@ class ApplianceListViewController: UIViewController {
             conservedTableView = segue.destination as? UITableViewController
             (segue.destination as? UnconservedTableViewController)?.actionsDelegate = self
         }
+        if segue.identifier == "ApplianceDetailSegue" {
+            (segue.destination as? DetailAppliance)?.appliance = selectedAppliance
+        }
     }
 }
 
@@ -127,6 +135,7 @@ extension ApplianceListViewController: UITableViewDataSource {
             return cell!
         }
     }
+    
     
 }
 
@@ -181,5 +190,14 @@ extension ApplianceListViewController: ApplianceActionsDelegate {
             self.fetchAppliance()
             self.applianceTableView.tableView.reloadData()
         }
+    }
+    
+    func applianceTapped(at index: Int, onTable table: String) {
+        if table == "ApplianceList" {
+            selectedAppliance = appliances[index]
+        } else {
+            selectedAppliance = unconservedAppliances[index]
+        }
+        self.performSegue(withIdentifier: "ApplianceDetailSegue", sender: self)
     }
 }

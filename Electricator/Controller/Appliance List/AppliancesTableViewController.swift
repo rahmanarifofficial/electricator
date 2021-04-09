@@ -39,4 +39,8 @@ class AppliancesTableViewController: UITableViewController {
         
         return UISwipeActionsConfiguration(actions: [delete])
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        actionsDelegate?.applianceTapped(at: indexPath.row, onTable: "ApplianceList")
+    }
 }

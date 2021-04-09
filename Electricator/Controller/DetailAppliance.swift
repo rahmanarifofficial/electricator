@@ -8,10 +8,10 @@
 import UIKit
 
 class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-
     @IBOutlet weak var topView: UITableView!
     @IBOutlet weak var downView: UITableView!
+    
+    var appliance: Appliance?
     
     var detailsDataAppliance = ["Air Conditioner", "1/2 PK", "400 W", "AC Living Room", "1 Unit"]
     
@@ -30,13 +30,40 @@ class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSou
         downView.delegate = self
         downView.dataSource = self
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action:#selector(backAction))
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        
+        prepareApplianceData()
+    }
+    
+    func prepareApplianceData() {
+        detailsDataAppliance[0] = appliance?.category ?? "Category not available"
+        detailsDataAppliance[1] = appliance?.type ?? "Type not available"
+        detailsDataAppliance[2] = String(appliance?.power ?? -1)
+        detailsDataAppliance[3] = appliance?.name ?? "Name not available"
+        detailsDataAppliance[4] = String(appliance?.quantity ?? -1)
+        
+        detailsDataUsage[0] = "\(appliance!.duration / 3600) hour"
+        detailsDataUsage[1] = (appliance?.repeatDay?.joined(separator: " "))!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ApplianceEditSegue" {
+            (segue.destination as? DetailEdit)?.appliance = appliance
+        }
+    }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "ApplianceEditSegue", sender: self)
     }
     
     @objc func backAction() {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -86,16 +113,3 @@ class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSou
         return rowCount
     }
 }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-

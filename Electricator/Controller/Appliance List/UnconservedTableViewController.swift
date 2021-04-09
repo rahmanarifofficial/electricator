@@ -31,4 +31,8 @@ class UnconservedTableViewController: UITableViewController {
         
         return UISwipeActionsConfiguration(actions: [unconserve])
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        actionsDelegate?.applianceTapped(at: indexPath.row, onTable: "UnconservedAppliances")
+    }
 }

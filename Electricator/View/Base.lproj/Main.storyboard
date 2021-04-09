@@ -206,14 +206,13 @@
         <!--DetailAppliances-->
         <scene sceneID="45e-UZ-KT7">
             <objects>
-                <viewController title="DetailAppliances" modalPresentationStyle="fullScreen" id="Zbp-EN-P3f" customClass="DetailAppliance" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplianceDetailVC" title="DetailAppliances" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="Zbp-EN-P3f" customClass="DetailAppliance" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hnf-sR-psK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Mw-ma-Fr3">
-                                <rect key="frame" x="0.0" y="158" width="414" height="247"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Mw-ma-Fr3">
+                                <rect key="frame" x="0.0" y="158" width="414" height="296"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="topCell" textLabel="0TQ-fd-lQ4" detailTextLabel="TmY-o4-6NR" style="IBUITableViewCellStyleValue1" id="xeL-hn-pT7">
@@ -242,10 +241,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-WI-zJq">
-                                <rect key="frame" x="0.0" y="448" width="414" height="121"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-WI-zJq">
+                                <rect key="frame" x="0.0" y="497" width="414" height="121"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="RhJ-hl-jMm"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="downCell" textLabel="pxO-PR-fS2" detailTextLabel="yhN-pC-c9w" style="IBUITableViewCellStyleValue1" id="aA5-Tx-wpn">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -273,16 +274,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Appliance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ak-rz-E6g">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appliance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ak-rz-E6g">
                                 <rect key="frame" x="20" y="123" width="108" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18p-2B-2Ws">
-                                <rect key="frame" x="20" y="413" width="68" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18p-2B-2Ws">
+                                <rect key="frame" x="20" y="462" width="68" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -290,28 +289,45 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ccQ-4k-eXe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ccQ-4k-eXe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="18p-2B-2Ws" secondAttribute="trailing" symbolic="YES" id="4AV-7n-bhO"/>
+                            <constraint firstItem="dyV-WI-zJq" firstAttribute="top" secondItem="18p-2B-2Ws" secondAttribute="bottom" constant="8" symbolic="YES" id="7Ta-S7-Qrb"/>
+                            <constraint firstItem="dyV-WI-zJq" firstAttribute="trailing" secondItem="ccQ-4k-eXe" secondAttribute="trailing" id="B3T-LV-AsF"/>
+                            <constraint firstItem="18p-2B-2Ws" firstAttribute="top" secondItem="6Mw-ma-Fr3" secondAttribute="bottom" constant="8" symbolic="YES" id="Bvt-BP-Dez"/>
+                            <constraint firstItem="6Mw-ma-Fr3" firstAttribute="leading" secondItem="ccQ-4k-eXe" secondAttribute="leading" id="Lfi-cT-iIS"/>
+                            <constraint firstItem="dyV-WI-zJq" firstAttribute="leading" secondItem="ccQ-4k-eXe" secondAttribute="leading" id="QRd-8I-Btg"/>
+                            <constraint firstItem="ccQ-4k-eXe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6ak-rz-E6g" secondAttribute="trailing" symbolic="YES" id="Unk-WW-Km3"/>
+                            <constraint firstItem="18p-2B-2Ws" firstAttribute="leading" secondItem="ccQ-4k-eXe" secondAttribute="leading" constant="20" id="dLF-T9-udh"/>
+                            <constraint firstItem="ccQ-4k-eXe" firstAttribute="bottom" secondItem="dyV-WI-zJq" secondAttribute="bottom" constant="244" id="kzJ-KS-YwW"/>
+                            <constraint firstItem="6ak-rz-E6g" firstAttribute="top" secondItem="ccQ-4k-eXe" secondAttribute="top" constant="35" id="oM0-qt-Swk"/>
+                            <constraint firstItem="6ak-rz-E6g" firstAttribute="leading" secondItem="ccQ-4k-eXe" secondAttribute="leading" constant="20" id="uix-uC-p1c"/>
+                            <constraint firstItem="6Mw-ma-Fr3" firstAttribute="trailing" secondItem="ccQ-4k-eXe" secondAttribute="trailing" id="wBo-FC-OdC"/>
+                            <constraint firstItem="6Mw-ma-Fr3" firstAttribute="top" secondItem="6ak-rz-E6g" secondAttribute="bottom" constant="8" symbolic="YES" id="zGx-ex-sLb"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Details" id="Uh2-LD-jvk">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="qDr-nv-qzK"/>
+                    <navigationItem key="navigationItem" title="Appliance Detail" id="Uh2-LD-jvk">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="crl-39-U7R">
                             <connections>
-                                <segue destination="odu-eR-Hae" kind="show" id="VV4-br-D3V"/>
+                                <action selector="editButtonTapped:" destination="Zbp-EN-P3f" id="yOh-WS-fqb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="downView" destination="dyV-WI-zJq" id="mbo-rJ-7B6"/>
                         <outlet property="topView" destination="6Mw-ma-Fr3" id="dsK-pe-bDr"/>
+                        <segue destination="odu-eR-Hae" kind="show" identifier="ApplianceEditSegue" id="Taa-XC-iJT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9X-sJ-mNx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5446" y="425"/>
+            <point key="canvasLocation" x="2484" y="1158"/>
         </scene>
-        <!--Edit Appliances-->
+        <!--Edit Appliance-->
         <scene sceneID="kI6-st-76J">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="odu-eR-Hae" customClass="DetailEdit" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="odu-eR-Hae" customClass="DetailEdit" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3WP-S6-o2g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,6 +467,7 @@
                             <constraint firstItem="meg-Ok-Xpk" firstAttribute="top" secondItem="9zZ-ZL-RjC" secondAttribute="bottom" constant="20" id="dIc-Il-omI"/>
                             <constraint firstItem="zTe-UW-NVy" firstAttribute="top" secondItem="fCs-Un-qIy" secondAttribute="bottom" constant="17" id="dZV-uO-aCh"/>
                             <constraint firstItem="aVl-2b-FGH" firstAttribute="top" secondItem="4qC-Ud-MMJ" secondAttribute="bottom" constant="29" id="fDj-IM-NNY"/>
+                            <constraint firstItem="aVl-2b-FGH" firstAttribute="leading" secondItem="nCE-4B-uBC" secondAttribute="leading" constant="20" id="h2b-5b-Y58"/>
                             <constraint firstItem="zTe-UW-NVy" firstAttribute="leading" secondItem="aVl-2b-FGH" secondAttribute="trailing" constant="159" id="hR7-5z-cEd"/>
                             <constraint firstItem="5nc-qP-igV" firstAttribute="top" secondItem="0Ga-LS-TUy" secondAttribute="bottom" constant="42" id="hag-v5-fiB"/>
                             <constraint firstItem="nCE-4B-uBC" firstAttribute="trailing" secondItem="fCs-Un-qIy" secondAttribute="trailing" constant="19.5" id="lBA-ng-N7P"/>
@@ -461,23 +478,20 @@
                             <constraint firstItem="nCE-4B-uBC" firstAttribute="trailing" secondItem="9zZ-ZL-RjC" secondAttribute="trailing" constant="20" id="xTT-FV-tMu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Appliances" id="khu-Ao-JTK"/>
-                    <connections>
-                        <outlet property="txt" destination="0Ga-LS-TUy" id="aN0-Lv-sE0"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Edit Appliance" id="khu-Ao-JTK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rX-WX-XC0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6372" y="425"/>
+            <point key="canvasLocation" x="3384" y="1158"/>
         </scene>
         <!--My Appliance Tab-->
         <scene sceneID="JcP-wR-fYC">
             <objects>
-                <navigationController title="My Appliance Tab" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xng-g3-bPq" sceneMemberID="viewController">
+                <navigationController title="My Appliance Tab" automaticallyAdjustsScrollViewInsets="NO" id="Xng-g3-bPq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Appliance" image="icon-appliance" id="D9d-2z-YZ0"/>
                     <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fDD-Fa-igH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -488,25 +502,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFf-E0-iJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1566.6666666666667" y="424.55357142857139"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="TU9-Rf-Du6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="2WI-sC-dA5" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="XBY-Ov-jYt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X38-PY-bJ1">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Zbp-EN-P3f" kind="relationship" relationship="rootViewController" id="v8R-Np-nBq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ABD-p0-xVD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4500" y="425"/>
         </scene>
         <!--My Appliance Content-->
         <scene sceneID="nFz-5E-hal">
@@ -616,6 +611,7 @@
                         <outlet property="noApplianceImage" destination="I1O-ea-YGo" id="gWg-Kr-UQU"/>
                         <outlet property="nonConserveLabel" destination="o7p-2X-4bz" id="olK-y3-ShP"/>
                         <outlet property="plusButton" destination="vGn-d2-qxi" id="Pno-TL-xWx"/>
+                        <segue destination="Zbp-EN-P3f" kind="show" identifier="ApplianceDetailSegue" id="YHL-oy-V35"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C76-Wz-ahW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -689,7 +685,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drL-D1-y5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3473.913043478261" y="350.55803571428572"/>
+            <point key="canvasLocation" x="3477" y="319"/>
         </scene>
         <!--Unconserved Table View Controller-->
         <scene sceneID="4pK-aB-7Ev">
@@ -758,7 +754,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kYa-pC-ncg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3478" y="623"/>
+            <point key="canvasLocation" x="3477" y="600"/>
         </scene>
     </scenes>
     <resources>
