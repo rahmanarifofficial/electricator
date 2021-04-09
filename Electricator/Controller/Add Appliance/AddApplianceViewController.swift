@@ -25,6 +25,15 @@ class AddApplianceViewController: UIViewController, UITableViewDelegate {
         "hour": 0,
         "minute": 0
     ]
+    var unabbreviatedDay = [
+        "SUN": "Sunday",
+        "MON": "Monday",
+        "TUE": "Tuesday",
+        "WED": "Wednesday",
+        "THU": "Thursday",
+        "FRI": "Friday",
+        "SAT": "Saturday"
+    ]
     var repeatDay = [String]()
     
     var delegate: AddApplianceControllerDelegate?
@@ -60,6 +69,25 @@ class AddApplianceViewController: UIViewController, UITableViewDelegate {
         let storyboard = UIStoryboard(name: "AddAppliance", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "RepeatDayList") as! RepeatDayViewController
         vc.delegate = self
+        
+        var repeatDayList = [
+            ("Sunday", false),
+            ("Monday", false),
+            ("Tuesday", false),
+            ("Wednesday", false),
+            ("Thursday", false),
+            ("Friday", false),
+            ("Saturday", false)
+        ]
+        for day in repeatDay {
+            for i in 0..<repeatDayList.count {
+                if unabbreviatedDay[day] == repeatDayList[i].0 {
+                    repeatDayList[i].1 = true
+                }
+            }
+        }
+        
+        vc.repeatDay = repeatDayList
         
         let navController = UINavigationController(rootViewController: vc)
         present(navController, animated: true, completion: nil)
@@ -189,7 +217,9 @@ extension AddApplianceViewController: RepeatDataDelegate {
         repeatDay = data
         
         var result = ""
-        if data.count == 7 {
+        if data.count == 0 {
+            result = "No Repeat"
+        }else if data.count == 7 {
             result = "Everyday"
         } else if repeatDay.sorted() == ["MON", "TUE", "WED", "THU", "FRI"].sorted() {
             result = "Weekdays"
