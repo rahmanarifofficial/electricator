@@ -9,16 +9,27 @@ import UIKit
 
 class PlanViewController: UIViewController {
     
+    @IBOutlet weak var billEstimationLabel: UILabel!
     @IBOutlet weak var applianceTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
-    let listAppliance = CoreDataManager.manager.fetchAppliances()
+    var listAppliance = [Appliance]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setupBillEstimation()
         setupView()
         setupTable()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        listAppliance = CoreDataManager.manager.fetchAppliances().filter { (Appliance) -> Bool in
+            Appliance.conserve == true
+        }
+        applianceTableView.reloadData()
+        setupBillEstimation()
+        setupView()
     }
     
     private func setupView(){
@@ -62,6 +73,26 @@ class PlanViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    private func setupBillEstimation(){
+        listAppliance = CoreDataManager.manager.fetchAppliances()
+        let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
+        var billEstimation: Double = 0
+        for item in listAppliance {
+            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.duration/3600), usage: Int(item.quantity)))
+        }
+        billEstimationLabel.text = "Rp\(String(billEstimation))"
+    }
+    
+    private func calculateBillEstimation (myCurrent: Int, watt: Int, hours: Double, usage: Int) -> Double {
+        
+        var calculateBillEstimation: Double = 0
+        if myCurrent <= 900  {
+            calculateBillEstimation = Double((Double(watt)*hours*Double(usage))/1000*1352)
+        } else if myCurrent > 900 {
+            calculateBillEstimation = Double((Double(watt)*hours*Double(usage))/1000*1444.7)
+        }
+        return Double(calculateBillEstimation*30)
+    }
 }
 
 extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
@@ -73,6 +104,9 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApplianceSuggestionCell", for: indexPath) as! ApplianceTableViewCell
         
         let appliance = self.listAppliance[indexPath.row]
+        let icon = Constants.ApplianceImages[appliance.category!]!?.withTintColor(Constants.darkBlue, renderingMode: .alwaysOriginal)
+
+        cell.imageItemAppliance.image = icon
         cell.textNameAppliance.text = appliance.name
         cell.textQuantityAppliance.text = String("\(appliance.quantity) Unit")
         cell.textHourAppliance.text = String("\(appliance.duration / 3600)h")
@@ -85,7 +119,6 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         let lockAction = UIContextualAction(style: .normal, title: "Lock") { (action, view, onComplete) in
             self.showLockDialog(appliance)
         }
-        lockAction.backgroundColor = .gray
         
         return UISwipeActionsConfiguration(actions: [lockAction])
     }
