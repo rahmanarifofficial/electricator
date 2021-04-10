@@ -14,6 +14,7 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var emptyView: UIView!
     
     var listAppliance = [Appliance]()
+    var choosenDuration = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,42 @@ class PlanViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    func durationPicker() -> UIPickerView {
+        let picker = UIPickerView()
+        picker.dataSource = self
+        picker.delegate = self
+        return picker
+    }
+    
+    func durationToolbarPicker(_ textField: UITextField) -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.tintColor = .systemBlue
+        toolbar.sizeToFit()
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:#selector(pickerCancelToolbarTapped))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
+        
+        toolbar.setItems([cancelButton, spacer, doneButton], animated: true)
+        toolbar.isUserInteractionEnabled = true
+        
+        return toolbar
+    }
+    
+    @objc func pickerCancelToolbarTapped(textField: UITextField){
+        /** TODO Ketika Cancel di click
+         1. endEditing textField yang ada di cell
+         */
+    }
+    
+    @objc private func pickerDoneToolbarTapped(){
+        /** TODO Ketika Done di click
+         1. Tampilan textField di cell berubah sesuai value choosenDuration
+         2. Recalculate menggunakan algoritma yang dibuat dzaki
+         3. endEditing textfield
+         */
+    }
+    
     private func setupBillEstimation(){
         listAppliance = CoreDataManager.manager.fetchAppliances()
         let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
@@ -112,6 +149,8 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         cell.textQuantityAppliance.text = String("\(appliance.quantity) Unit")
         cell.textHourAppliance.text = String("\(appliance.duration / 3600)h")
         cell.textFinalHourAppliance.text = String("\(appliance.duration / 3600)h")
+        cell.textHourAppliance.inputView = durationPicker()
+        cell.textHourAppliance.inputAccessoryView = durationToolbarPicker(cell.textHourAppliance)
         if appliance.lock {
             // Tampilan Jika ada appliance yang terkunci
             cell.lockHourViewAppliance.isHidden = false
@@ -136,5 +175,25 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [lockAction])
     }
 }
+
+extension PlanViewController: UIPickerViewDataSource, UIPickerViewDelegate{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Constants.HourFromOne.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String("\(Constants.HourFromOne[row]) Hour")
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        choosenDuration = Constants.HourFromOne[row]
+    }
+    
+}
+
 
 

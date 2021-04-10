@@ -86,6 +86,11 @@
                     <constraint firstItem="gxu-aM-lld" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="ugF-hT-F0m"/>
                     <constraint firstItem="xyi-5c-q7e" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zQG-sv-ILX"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="xyi-5c-q7e"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

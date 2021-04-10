@@ -24,6 +24,7 @@ struct Constants {
         "Iron": UIImage(named: "ic-iron")
     ]
     static let Hour = Array(0...24)
+    static let HourFromOne = Array(1...24)
     static let Minute = Array(0...60)
     
     static let darkBlue = UIColor(red: 2/255, green: 69/255, blue: 163/255, alpha: 1)
