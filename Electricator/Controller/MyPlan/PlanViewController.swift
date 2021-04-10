@@ -14,6 +14,7 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var emptyView: UIView!
     
     var listAppliance = [Appliance]()
+    var choosenDuration = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,21 +57,58 @@ class PlanViewController: UIViewController {
         applianceTableView.register(UINib(nibName: "ApplianceTableViewCell", bundle: nil), forCellReuseIdentifier: "ApplianceSuggestionCell")
     }
     
-    private func showLockDialog(_ item: Appliance){
+    private func showLockDialog(_ item: Appliance, _ isLock:Bool){
         let alert = UIAlertController(
             title: "Lock Item",
             message: "Are you sure want to lock this item’s usage suggestion?",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
-            print("Lock Item.")
+            CoreDataManager.manager.setApplianceLock(for: item, toLock: isLock)
+            self.applianceTableView.reloadData()
         })
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            print("Cancel lock item.")
+            self.dismiss(animated: true, completion: nil)
         })
         
         self.present(alert, animated: true)
+    }
+    
+    func durationPicker() -> UIPickerView {
+        let picker = UIPickerView()
+        picker.dataSource = self
+        picker.delegate = self
+        return picker
+    }
+    
+    func durationToolbarPicker(_ textField: UITextField) -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.tintColor = .systemBlue
+        toolbar.sizeToFit()
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:#selector(pickerCancelToolbarTapped))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
+        
+        toolbar.setItems([cancelButton, spacer, doneButton], animated: true)
+        toolbar.isUserInteractionEnabled = true
+        
+        return toolbar
+    }
+    
+    @objc func pickerCancelToolbarTapped(textField: UITextField){
+        /** TODO Ketika Cancel di click
+         1. endEditing textField yang ada di cell
+         */
+    }
+    
+    @objc private func pickerDoneToolbarTapped(){
+        /** TODO Ketika Done di click
+         1. Tampilan textField di cell berubah sesuai value choosenDuration
+         2. Recalculate menggunakan algoritma yang dibuat dzaki
+         3. endEditing textfield
+         */
     }
     
     private func setupBillEstimation(){
@@ -105,23 +143,57 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         
         let appliance = self.listAppliance[indexPath.row]
         let icon = Constants.ApplianceImages[appliance.category!]!?.withTintColor(Constants.darkBlue, renderingMode: .alwaysOriginal)
-
+        
         cell.imageItemAppliance.image = icon
         cell.textNameAppliance.text = appliance.name
         cell.textQuantityAppliance.text = String("\(appliance.quantity) Unit")
         cell.textHourAppliance.text = String("\(appliance.duration / 3600)h")
-        cell.lockHourViewAppliance.isHidden = true
+        cell.textFinalHourAppliance.text = String("\(appliance.duration / 3600)h")
+        cell.textHourAppliance.inputView = durationPicker()
+        cell.textHourAppliance.inputAccessoryView = durationToolbarPicker(cell.textHourAppliance)
+        if appliance.lock {
+            // Tampilan Jika ada appliance yang terkunci
+            cell.lockHourViewAppliance.isHidden = false
+            cell.unlockHourViewAppliance.isHidden = true
+        }else{
+            cell.lockHourViewAppliance.isHidden = true
+            cell.unlockHourViewAppliance.isHidden=false
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let appliance = self.listAppliance[indexPath.row]
         let lockAction = UIContextualAction(style: .normal, title: "Lock") { (action, view, onComplete) in
-            self.showLockDialog(appliance)
+            if(appliance.lock){
+                self.showLockDialog(appliance, false)
+            } else{
+                self.showLockDialog(appliance, true)
+            }
         }
         
         return UISwipeActionsConfiguration(actions: [lockAction])
     }
 }
+
+extension PlanViewController: UIPickerViewDataSource, UIPickerViewDelegate{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Constants.HourFromOne.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String("\(Constants.HourFromOne[row]) Hour")
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        choosenDuration = Constants.HourFromOne[row]
+    }
+    
+}
+
 
 
