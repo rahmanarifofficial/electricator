@@ -18,13 +18,15 @@ class PlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         setupBillEstimation()
         setupView()
         setupTable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+        
         listAppliance = CoreDataManager.manager.fetchAppliances().filter { (Appliance) -> Bool in
             Appliance.conserve == true
         }

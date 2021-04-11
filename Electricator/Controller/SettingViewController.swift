@@ -35,6 +35,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         toolBar()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 1
 

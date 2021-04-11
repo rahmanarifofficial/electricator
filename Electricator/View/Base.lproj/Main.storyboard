@@ -18,16 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="My Plan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucC-Gy-MWP">
-                                <rect key="frame" x="20" y="88" width="149.5" height="49"/>
+                                <rect key="frame" x="20" y="44" width="149.5" height="49"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="41"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="icon-settings" translatesAutoresizingMaskIntoConstraints="NO" id="Uil-Vs-3h9">
-                                <rect key="frame" x="366" y="98" width="28" height="29"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXz-29-nSX">
-                                <rect key="frame" x="20" y="157" width="374" height="150"/>
+                                <rect key="frame" x="20" y="113" width="374" height="150"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-bill-estimation" translatesAutoresizingMaskIntoConstraints="NO" id="FHe-uZ-lpJ">
                                         <rect key="frame" x="0.0" y="4" width="374" height="146"/>
@@ -57,20 +54,20 @@
                                 </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-fu-MK2">
-                                <rect key="frame" x="18" y="373.5" width="378" height="31"/>
+                                <rect key="frame" x="18" y="329.5" width="378" height="31"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Your Saving Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-ia-cuX">
-                                <rect key="frame" x="20" y="327" width="254" height="26.5"/>
+                                <rect key="frame" x="20" y="283" width="254" height="26.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appliances" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW4-ew-PUa">
-                                <rect key="frame" x="20" y="433.5" width="115" height="26.5"/>
+                                <rect key="frame" x="20" y="389.5" width="115" height="26.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtl-O0-j7f">
-                                <rect key="frame" x="20" y="490" width="374" height="300"/>
+                                <rect key="frame" x="20" y="446" width="374" height="300"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-empty-appliance" translatesAutoresizingMaskIntoConstraints="NO" id="wMZ-N4-Hq8">
                                         <rect key="frame" x="72" y="0.0" width="230" height="150"/>
@@ -126,20 +123,20 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yPf-gG-uG8">
-                                <rect key="frame" x="20" y="490" width="374" height="323"/>
+                                <rect key="frame" x="20" y="446" width="374" height="367"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-Sy-oPF">
-                                <rect key="frame" x="348" y="135" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daE-Sy-oPF">
+                                <rect key="frame" x="359" y="53" width="35" height="31"/>
+                                <state key="normal" image="icon-settings">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
                                 <connections>
                                     <segue destination="FuG-eI-lIm" kind="show" id="eUd-DE-zfF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZP-lu-AZ0">
-                                <rect key="frame" x="297" y="325" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZP-lu-AZ0">
+                                <rect key="frame" x="311" y="279" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Learn More"/>
                                 <connections>
@@ -151,16 +148,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cW4-ew-PUa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="242-Eb-Bgr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uil-Vs-3h9" secondAttribute="trailing" constant="20" id="7oY-oQ-jRS"/>
+                            <constraint firstItem="uZP-lu-AZ0" firstAttribute="top" secondItem="FHe-uZ-lpJ" secondAttribute="bottom" constant="16" id="39l-dr-s9j"/>
                             <constraint firstItem="ucC-Gy-MWP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Ga-iY-IRj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="daE-Sy-oPF" secondAttribute="trailing" constant="20" id="8jc-eH-4Jm"/>
                             <constraint firstItem="yPf-gG-uG8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BMK-SD-EEF"/>
                             <constraint firstItem="mhM-ia-cuX" firstAttribute="top" secondItem="FHe-uZ-lpJ" secondAttribute="bottom" constant="20" id="DkI-Fx-Jo8"/>
                             <constraint firstItem="EXz-29-nSX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="E3E-tR-JBE"/>
                             <constraint firstItem="jtl-O0-j7f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="GLh-Fq-0SW"/>
                             <constraint firstItem="EXz-29-nSX" firstAttribute="top" secondItem="ucC-Gy-MWP" secondAttribute="bottom" constant="20" id="GO1-Qu-zOf"/>
                             <constraint firstItem="mhM-ia-cuX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="J72-PI-BgV"/>
-                            <constraint firstItem="Uil-Vs-3h9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Tpe-mQ-fpF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uZP-lu-AZ0" secondAttribute="trailing" constant="20" id="Ugy-Ch-U9m"/>
                             <constraint firstItem="jtl-O0-j7f" firstAttribute="top" secondItem="cW4-ew-PUa" secondAttribute="bottom" constant="30" id="Ur6-3W-fU9"/>
+                            <constraint firstItem="daE-Sy-oPF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="XjP-4V-cd0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UHl-fu-MK2" secondAttribute="trailing" constant="20" id="dS3-Kg-Som"/>
                             <constraint firstItem="yPf-gG-uG8" firstAttribute="top" secondItem="cW4-ew-PUa" secondAttribute="bottom" constant="30" id="eKf-gM-abK"/>
                             <constraint firstItem="UHl-fu-MK2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="eia-fW-zf5"/>
@@ -175,6 +174,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GUt-fm-EU5"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="applianceTableView" destination="yPf-gG-uG8" id="FOz-oE-aad"/>
                         <outlet property="billEstimationLabel" destination="1Wv-kJ-1c2" id="H7A-bh-xrW"/>
@@ -239,6 +239,7 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="7yU-ql-SZW"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="notifView" destination="Hm1-Em-ePC" id="PEY-lC-rcb"/>
                         <outlet property="powerField" destination="Mce-ei-nxU" id="kdg-Jg-NcO"/>
