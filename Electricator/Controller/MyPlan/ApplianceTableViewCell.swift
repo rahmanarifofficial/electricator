@@ -13,6 +13,7 @@ class ApplianceTableViewCell: UITableViewCell {
     @IBOutlet weak var textNameAppliance: UILabel!
     @IBOutlet weak var textQuantityAppliance: UILabel!
     @IBOutlet weak var lockHourViewAppliance: UIStackView!
+    @IBOutlet weak var lockIcon: UIImageView!
     @IBOutlet weak var textFinalHourAppliance: UILabel!
     @IBOutlet weak var unlockHourViewAppliance: UIStackView!
     @IBOutlet weak var textHourAppliance: UITextField!

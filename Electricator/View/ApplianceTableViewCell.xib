@@ -69,9 +69,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
+                    <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-lock" translatesAutoresizingMaskIntoConstraints="NO" id="ayi-lb-oiH">
+                        <rect key="frame" x="337" y="23" width="15" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="HEK-7O-42A"/>
+                            <constraint firstAttribute="width" constant="15" id="yeM-gB-c88"/>
+                        </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Tv8-dw-l8Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="861-Kb-iyf"/>
+                    <constraint firstItem="6VG-xX-epc" firstAttribute="leading" secondItem="ayi-lb-oiH" secondAttribute="trailing" constant="2.5" id="8IW-AK-poI"/>
                     <constraint firstAttribute="bottom" secondItem="xyi-5c-q7e" secondAttribute="bottom" constant="21" id="D2N-Ka-6GO"/>
                     <constraint firstItem="xyi-5c-q7e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="Gg5-87-NWq"/>
                     <constraint firstItem="ICR-7y-gWb" firstAttribute="leading" secondItem="Tv8-dw-l8Z" secondAttribute="trailing" constant="10" id="MSI-sS-IJo"/>
@@ -83,6 +92,7 @@
                     <constraint firstAttribute="bottom" secondItem="Tv8-dw-l8Z" secondAttribute="bottom" constant="12" id="jFJ-Nd-Qki"/>
                     <constraint firstAttribute="trailing" secondItem="xyi-5c-q7e" secondAttribute="trailing" constant="10" id="kAM-P3-XbA"/>
                     <constraint firstItem="ICR-7y-gWb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n84-Gw-2f9"/>
+                    <constraint firstItem="ayi-lb-oiH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="pb0-a7-57j"/>
                     <constraint firstAttribute="trailing" secondItem="gxu-aM-lld" secondAttribute="trailing" constant="10" id="sNX-3u-RtQ"/>
                     <constraint firstItem="gxu-aM-lld" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="ugF-hT-F0m"/>
                     <constraint firstItem="xyi-5c-q7e" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zQG-sv-ILX"/>
@@ -97,6 +107,7 @@
             <connections>
                 <outlet property="imageItemAppliance" destination="Tv8-dw-l8Z" id="Mxd-Kb-I4h"/>
                 <outlet property="lockHourViewAppliance" destination="xyi-5c-q7e" id="eGI-Hc-fFG"/>
+                <outlet property="lockIcon" destination="ayi-lb-oiH" id="SJJ-Lc-6OP"/>
                 <outlet property="textFinalHourAppliance" destination="NPz-NB-nXQ" id="eai-Aq-phm"/>
                 <outlet property="textHourAppliance" destination="6VG-xX-epc" id="hPy-ai-4uJ"/>
                 <outlet property="textNameAppliance" destination="fb3-iD-Wk2" id="xSl-8F-KV1"/>
@@ -108,6 +119,7 @@
     </objects>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="ic-lock" width="12" height="15"/>
         <image name="ic-padlock" width="12" height="15"/>
     </resources>
 </document>

@@ -143,7 +143,7 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApplianceSuggestionCell", for: indexPath) as! ApplianceTableViewCell
         
         let appliance = self.listAppliance[indexPath.row]
-        let icon = Constants.ApplianceImages[appliance.category!]!?.withTintColor(Constants.darkBlue, renderingMode: .alwaysOriginal)
+        let icon = Constants.ApplianceImages[appliance.category!]!?.withTintColor(appliance.lock ? Constants.grey : Constants.darkBlue, renderingMode: .alwaysOriginal)
         
         cell.imageItemAppliance.image = icon
         cell.textNameAppliance.text = appliance.name
@@ -156,11 +156,15 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         cell.textHourAppliance.inputAccessoryView = durationToolbarPicker(cell.textHourAppliance)
         if appliance.lock {
             // Tampilan Jika ada appliance yang terkunci
-            cell.lockHourViewAppliance.isHidden = false
-            cell.unlockHourViewAppliance.isHidden = true
+            cell.textNameAppliance.textColor = Constants.grey
+            cell.textQuantityAppliance.textColor = Constants.grey
+            cell.textHourAppliance.isUserInteractionEnabled = false
+            cell.lockIcon.isHidden = false
         }else{
-            cell.lockHourViewAppliance.isHidden = true
-            cell.unlockHourViewAppliance.isHidden=false
+            cell.textNameAppliance.textColor = .black
+            cell.textQuantityAppliance.textColor = .black
+            cell.textHourAppliance.isUserInteractionEnabled = true
+            cell.lockIcon.isHidden = true
         }
         return cell
     }

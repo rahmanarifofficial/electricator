@@ -28,4 +28,5 @@ struct Constants {
     static let Minute = Array(0...60)
     
     static let darkBlue = UIColor(red: 2/255, green: 69/255, blue: 163/255, alpha: 1)
+    static let grey = UIColor(red: 161/255, green: 169/255, blue: 181/255, alpha: 1)
 }
