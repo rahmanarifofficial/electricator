@@ -79,36 +79,37 @@ class PlanViewController: UIViewController {
         let picker = UIPickerView()
         picker.dataSource = self
         picker.delegate = self
+        
         return picker
     }
     
-    func durationToolbarPicker(_ textField: UITextField) -> UIToolbar {
+    func durationToolbarPicker(_ sender: UITextField) -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.tintColor = .systemBlue
         toolbar.sizeToFit()
         
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:#selector(pickerCancelToolbarTapped))
+        cancelButton.tag = sender.tag
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
-        
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(pickerDoneToolbarTapped(_:)))
+        doneButton.tag = sender.tag
         toolbar.setItems([cancelButton, spacer, doneButton], animated: true)
         toolbar.isUserInteractionEnabled = true
         
         return toolbar
     }
     
-    @objc func pickerCancelToolbarTapped(textField: UITextField){
-        /** TODO Ketika Cancel di click
-         1. endEditing textField yang ada di cell
-         */
+    @objc func pickerCancelToolbarTapped(_ sender: UIBarButtonItem){
+        self.view.endEditing(true)
     }
     
-    @objc private func pickerDoneToolbarTapped(){
-        /** TODO Ketika Done di click
-         1. Tampilan textField di cell berubah sesuai value choosenDuration
-         2. Recalculate menggunakan algoritma yang dibuat dzaki
-         3. endEditing textfield
-         */
+    @objc private func pickerDoneToolbarTapped(_ sender: UIBarButtonItem){
+        print("row: \(sender.tag)")
+        listAppliance[sender.tag].saveHour = Int32(choosenDuration * 3600)
+        // Add recalculate here
+        applianceTableView.reloadData()
+        
+        self.view.endEditing(true)
     }
     
     private func setupBillEstimation(){
@@ -147,8 +148,10 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         cell.imageItemAppliance.image = icon
         cell.textNameAppliance.text = appliance.name
         cell.textQuantityAppliance.text = String("\(appliance.quantity) Unit")
-        cell.textHourAppliance.text = String("\(appliance.duration / 3600)h")
+        let duration = appliance.saveHour == -1 ? appliance.duration : appliance.saveHour
+        cell.textHourAppliance.text = String("\(duration / 3600 )h")
         cell.textFinalHourAppliance.text = String("\(appliance.duration / 3600)h")
+        cell.textHourAppliance.tag = indexPath.row
         cell.textHourAppliance.inputView = durationPicker()
         cell.textHourAppliance.inputAccessoryView = durationToolbarPicker(cell.textHourAppliance)
         if appliance.lock {
@@ -194,6 +197,3 @@ extension PlanViewController: UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
 }
-
-
-

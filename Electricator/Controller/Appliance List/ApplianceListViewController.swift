@@ -55,7 +55,7 @@ class ApplianceListViewController: UIViewController {
         conservedAppliancesContainer.isHidden = noConservedAppliances
         noApplianceImage.isHidden = !(noAppliances && noConservedAppliances)
         nonConserveLabel.isHidden = !noApplianceImage.isHidden
-        conserveGuideImage.isHidden = noApplianceImage.isHidden && !noConservedAppliances
+        conserveGuideImage.isHidden = !(noConservedAppliances && noApplianceImage.isHidden)
     }
     
     func fetchAppliance() {
@@ -145,6 +145,7 @@ extension ApplianceListViewController: AddApplianceControllerDelegate {
         
         fetchAppliance()
         applianceTableView.tableView.reloadData()
+        checkForGuidestoShow()
     }
 }
 
@@ -170,16 +171,16 @@ extension ApplianceListViewController: ApplianceActionsDelegate {
     func conserveAppliance(at index: Int) {
         showAlert(for: "Conserve", yesAction: "Yes", isDestructive: false) { _ in
             CoreDataManager.manager.setApplianceConservation(for: self.unconservedAppliances[index], toConserve: true)
-            self.updateTable()
             
+            self.updateTable()
             self.checkForGuidestoShow()
         }
     }
     
     func unconserveAppliance(at index: Int) {
         showAlert(for: "Unconserve", yesAction: "Yes", isDestructive: false) { _ in            CoreDataManager.manager.setApplianceConservation(for: self.appliances[index], toConserve: false)
-            self.updateTable()
             
+            self.updateTable()
             self.checkForGuidestoShow()
         }
     }
@@ -189,6 +190,7 @@ extension ApplianceListViewController: ApplianceActionsDelegate {
             
             self.fetchAppliance()
             self.applianceTableView.tableView.reloadData()
+            self.checkForGuidestoShow()
         }
     }
     
