@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     @IBOutlet weak var notifView: UITableView!
     @IBOutlet weak var powerField: UITextField!
     
-  
+    
     let powerPicker = UIPickerView()
     
     var powerData = ["450 VA", "900 VA", "1300 VA", "2200 VA", "3500 VA", "5500 VA", "6600 VA"]
@@ -22,9 +23,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
-
+        
+        
         
         notifView.delegate = self
         notifView.dataSource = self
@@ -33,7 +34,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         powerPicker.dataSource = self
         
         toolBar()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,10 +44,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
-
-        }
+        return 1
         
+    }
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,45 +63,73 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         swtch.addTarget(self, action: #selector(self.switchChanged(_:)), for: UIControl.Event.valueChanged)
         
         cell.accessoryView = swtch
-            
-
+        
+        
         return cell
-
-        }
-
+        
+    }
     
-    @objc func switchChanged(_ sender: UISwitch) {
-       
-        if sender.isOn {
-            
-            print("yes")
-            let center = UNUserNotificationCenter.current()
-            
-            let content = UNMutableNotificationContent()
-            
-            content.title = "Reminder"
-            content.body = "Reduce your electricity usage"
-            content.sound = .default
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: "swtch", content: content, trigger: trigger )
-            center.add(request) { (error) in
-                if error != nil{
-                    
-                    print("Error = \(error?.localizedDescription ?? "error local notification")")
-                }
+    func createNewNotification() {
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        
+        content.title = "Reminder"
+        content.body = "Reduce your electricity usage"
+        content.sound = .default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "swtch", content: content, trigger: trigger )
+        center.add(request) { (error) in
+            if error != nil{
+                
+                print("Error = \(error?.localizedDescription ?? "error local notification")")
             }
         }
+    }
+    
+    
+    @objc func switchChanged(_ sender: UISwitch) {
         
-        else {
+        if sender.isOn {
+            
+            let center = UNUserNotificationCenter.current()
+            center.getNotificationSettings { setting in
+                if setting.authorizationStatus == .denied {
+                    DispatchQueue.main.async {
+                        let isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications
+                        if !isRegisteredForRemoteNotifications {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+                        }
+                    }
+                    
+                } else if setting.authorizationStatus == .notDetermined {
+                    center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                        if let error = error {
+                            print(error)
+                        }
+                        if granted {
+                            self.createNewNotification()
+                        } else {
+                            DispatchQueue.main.async {
+                                print("Called")
+                                sender.isOn = false
+                            }
+                        }
+                    }
+                } else if setting.authorizationStatus == .authorized {
+                    self.createNewNotification()
+                }
+            }
+        } else {
             let center = UNUserNotificationCenter.current()
             center.removeAllDeliveredNotifications() // To remove all delivered notifications
             center.removeAllPendingNotificationRequests()
             print("no")
         }
-            
-    
+        
+        
     }
     
     func toolBar() {
@@ -124,6 +153,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func donePressed() {
+        let house = CoreDataManager.manager.fetchHouse()
+        let power = Int16((powerField.text?.components(separatedBy: " ")[0])!)!
+        CoreDataManager.manager.updateHouse(to: power, for: house!)
         
         self.view.endEditing(true)
     }
@@ -149,13 +181,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
