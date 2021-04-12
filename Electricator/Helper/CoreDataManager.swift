@@ -83,6 +83,7 @@ class CoreDataManager {
         appliance.quantity = quantity
         appliance.duration = duration
         appliance.repeatDay = repeatDay
+        appliance.saveHour = duration
         
         let request = House.fetchRequest() as NSFetchRequest<House>
         let house = try? context.fetch(request)

@@ -104,53 +104,66 @@ class PlanViewController: UIViewController {
         return toolbar
     }
     
+    private func showUnableToAdjustAlert() {
+        let alert = UIAlertController(title: "Unable to adjust usage", message: "Your preferred usage hours are not possible within this saving plan.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
+    
+    func adjustApplianceUsage(accordingTo customizedIndex: Int, newUsage usage: Int) {
+        let deltaTime = (listAppliance[customizedIndex].saveHour / 3600) - Int32(usage)
+        let offsetUsage = deltaTime * Int32(listAppliance[customizedIndex].power) * Int32(listAppliance[customizedIndex].quantity)
+        let applianceUsageOffset = offsetUsage / Int32(listAppliance.count - 1)
+        
+        var adjustedUsages: [Int: Int32] = [:]
+        for i in 0..<listAppliance.count {
+            if i != customizedIndex && !listAppliance[i].lock {
+                // We will get current appliance data first
+                let currentAppliance = listAppliance[i]
+                let qty = Int32(currentAppliance.quantity)
+                let power = Int32(currentAppliance.power)
+                let duration = Int32(currentAppliance.saveHour / 3600)
+                
+                // Calculate current electricity usage without customized appliance intervention
+                let currentApplianceUsage = duration * power * qty
+                
+                // Find adjusted usage hour from previous data
+                let maximumUsage = currentApplianceUsage + applianceUsageOffset
+                var adjustedUsage = Double(maximumUsage / (power * qty))
+                
+                if maximumUsage < 0 {
+                    showUnableToAdjustAlert()
+                    return
+                }
+                adjustedUsage = (adjustedUsage > 24 ? 24 : adjustedUsage)
+                
+                // Save the data to dictionary
+                adjustedUsages[i] = Int32(adjustedUsage * 3600)
+            }
+        }
+        
+        // If we reach there, it means the adjusted appliances usage is possible, we need to update appliance saveHour and update the table.
+        for (index, usage) in adjustedUsages {
+            listAppliance[index].saveHour = usage
+        }
+        
+        listAppliance[customizedIndex].saveHour = Int32(choosenDuration * 3600)
+        
+        applianceTableView.reloadData()
+        setupBillEstimation()
+    }
+    
     @objc func pickerCancelToolbarTapped(_ sender: UIBarButtonItem){
         self.view.endEditing(true)
     }
     
-    @objc private func pickerDoneToolbarTapped(_ sender: UIBarButtonItem){
-        print("row: \(sender.tag)")
-        listAppliance[sender.tag].saveHour = Int32(choosenDuration * 3600)
-        
-        let resultDelta = abs(listAppliance[sender.tag].duration - listAppliance[sender.tag].saveHour)
-        
-        let resultLock = resultDelta/(Int32(listAppliance.count)-1)
-        
-        var app = [Double](repeating: 0.0 , count: listAppliance.count)
-        
-        for index in listAppliance.indices {
-        
-            if index != sender.tag {
-                
-                app[index] = Double(Int16(listAppliance[index].saveHour)*listAppliance[index].power*listAppliance[index].quantity)
-                
-                if listAppliance[sender.tag].duration > listAppliance[sender.tag].saveHour {
-                    
-                    app[index] -= Double(resultLock)
-                    
-                }
-                
-                else {
-                    
-                    app[index] += Double(resultLock)
-
-                }
-                
-            }
-        }
-        
-        for index in listAppliance.indices {
-            
-            if index != sender.tag {
-                
-                listAppliance[index].saveHour = Int32(Int(Int16(app[index])/listAppliance[index].quantity*listAppliance[index].power))
-                
-            }
-            
-
-        }
-        
-        applianceTableView.reloadData()
+    @objc func pickerDoneToolbarTapped(_ sender: UIBarButtonItem){
+        let customizedIndex = sender.tag
+        adjustApplianceUsage(accordingTo: customizedIndex, newUsage: choosenDuration)
         
         self.view.endEditing(true)
     }
@@ -160,7 +173,7 @@ class PlanViewController: UIViewController {
         let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
         var billEstimation: Double = 0
         for item in listAppliance {
-            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.duration/3600), usage: Int(item.quantity)))
+            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity)))
         }
         billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
     }
@@ -177,14 +190,11 @@ class PlanViewController: UIViewController {
     }
     
     @IBAction func slider(_ sender: UISlider) {
-        
         maxSlider.text = "\(Int(sender.value))%"
         
         for appliance in listAppliance {
-            
             if !appliance.lock {
-            appliance.saveHour = appliance.duration - appliance.duration * Int32(sender.value)/100
-                
+                appliance.saveHour = appliance.duration - appliance.duration * Int32(sender.value)/100
             }
         }
         
