@@ -66,7 +66,7 @@ class DetailEdit: UIViewController {
         
         let hour = appliance!.duration / 3600
         let minutes = (appliance!.duration - hour * 3600) / 60
-        durationTextField.text = "\(hour) hours \(minutes) minutes"
+        durationTextField.text = "\(hour)h \(minutes)m"
         chosenDuration["hour"] = Int(hour)
         chosenDuration["minute"] = Int(minutes)
         
@@ -184,8 +184,8 @@ extension DetailEdit: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     @objc func pickerCancelToolbarTapped() {
-        chosenDuration["hour"] = -1
-        chosenDuration["minute"] = -1
+        chosenDuration["hour"] = 0
+        chosenDuration["minute"] = 0
         durationTextField.endEditing(true)
     }
     

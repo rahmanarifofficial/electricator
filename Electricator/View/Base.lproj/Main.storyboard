@@ -491,7 +491,7 @@
                                         <rect key="frame" x="144" y="10" width="12.666666666666657" height="16.666666666666664"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0 hours 0 minutes" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5kt-7f-YVS">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0h 0 m" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5kt-7f-YVS">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -526,11 +526,11 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="No Repeat" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="utU-3j-vLi">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
+                                        <rect key="frame" x="-124" y="0.0" width="264" height="34"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="Qcs-wW-7vw"/>
-                                            <constraint firstAttribute="width" constant="140" id="dfL-np-tgu"/>
+                                            <constraint firstAttribute="width" constant="264" id="dfL-np-tgu"/>
                                         </constraints>
                                         <color key="textColor" red="0.0078431372550000003" green="0.27058823529999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -541,7 +541,7 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="utU-3j-vLi" firstAttribute="leading" secondItem="uto-8b-IpP" secondAttribute="leading" id="33w-ZU-RRT"/>
+                                    <constraint firstItem="utU-3j-vLi" firstAttribute="leading" secondItem="uto-8b-IpP" secondAttribute="leading" constant="-124" id="33w-ZU-RRT"/>
                                     <constraint firstAttribute="trailing" secondItem="TJb-Nk-BDS" secondAttribute="trailing" constant="4" id="4ml-ja-pvE"/>
                                     <constraint firstItem="TJb-Nk-BDS" firstAttribute="leading" secondItem="utU-3j-vLi" secondAttribute="trailing" constant="4" id="9iU-KJ-cem"/>
                                     <constraint firstItem="TJb-Nk-BDS" firstAttribute="top" secondItem="uto-8b-IpP" secondAttribute="top" constant="8" id="IxE-pt-zb2"/>
@@ -549,8 +549,8 @@
                                     <constraint firstItem="utU-3j-vLi" firstAttribute="top" secondItem="uto-8b-IpP" secondAttribute="top" id="fh8-W1-uZx"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDe-gM-30Z">
-                                <rect key="frame" x="210" y="350" width="53" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDe-gM-30Z">
+                                <rect key="frame" x="210" y="350" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
