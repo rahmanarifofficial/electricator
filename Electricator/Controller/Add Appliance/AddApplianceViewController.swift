@@ -150,13 +150,13 @@ extension AddApplianceViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let hour = chosenDuration["hour"]!
         let minute = chosenDuration["minute"]!
         
-        durationTextField.text = "\(hour) hours \(minute) minutes"
+        durationTextField.text = "\(hour)h \(minute)m"
         durationTextField.endEditing(true)
     }
     
     @objc func pickerCancelToolbarTapped() {
-        chosenDuration["hour"] = -1
-        chosenDuration["minute"] = -1
+        chosenDuration["hour"] = 0
+        chosenDuration["minute"] = 0
         durationTextField.endEditing(true)
     }
     
