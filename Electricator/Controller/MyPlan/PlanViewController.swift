@@ -28,6 +28,10 @@ class PlanViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         
+        let house = CoreDataManager.manager.fetchHouse()
+        slider.value = Float(house!.savingPlan)
+        maxSlider.text = "\(Int(slider.value))%"
+        
         listAppliance = CoreDataManager.manager.fetchAppliances().filter { (Appliance) -> Bool in
             Appliance.conserve == true
         }
@@ -190,6 +194,8 @@ class PlanViewController: UIViewController {
     }
     
     @IBAction func slider(_ sender: UISlider) {
+        let house = CoreDataManager.manager.fetchHouse()
+        CoreDataManager.manager.updateSavingPlan(to: Double(sender.value), for: house!)
         maxSlider.text = "\(Int(sender.value))%"
         
         for appliance in listAppliance {

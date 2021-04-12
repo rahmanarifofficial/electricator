@@ -55,6 +55,14 @@ class CoreDataManager {
         try? context.save()
     }
     
+    func updateSavingPlan(to savingPlan: Double, for house: House) {
+        let context = CoreDataManager.manager.persistentContainer.viewContext
+        
+        house.savingPlan = savingPlan
+        
+        try? context.save()
+    }
+    
     func deleteHouse(house: House) {
         let context = CoreDataManager.manager.persistentContainer.viewContext
         
