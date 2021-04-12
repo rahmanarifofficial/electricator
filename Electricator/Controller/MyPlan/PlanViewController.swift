@@ -12,7 +12,7 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var billEstimationLabel: UILabel!
     @IBOutlet weak var applianceTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
-    
+    @IBOutlet weak var slider : UISlider!
     var listAppliance = [Appliance]()
     var choosenDuration = 0
     
@@ -134,6 +134,28 @@ class PlanViewController: UIViewController {
         }
         return Double(calculateBillEstimation*30)
     }
+    
+    @IBAction func slider(_ sender: UISlider) {
+        
+        for appliance in listAppliance {
+            
+            appliance.saveHour = appliance.duration - appliance.duration * Int32(sender.value)/100
+            
+        }
+        
+        
+        applianceTableView.reloadData()
+        
+        listAppliance = CoreDataManager.manager.fetchAppliances()
+        let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
+        var billEstimation: Double = 0
+        for item in listAppliance {
+            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity)))
+        }
+        billEstimationLabel.text = "Rp\(String(billEstimation))"
+    }
+    
+    
 }
 
 extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
@@ -183,6 +205,9 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         
         return UISwipeActionsConfiguration(actions: [lockAction])
     }
+    
+    
+    
 }
 
 extension PlanViewController: UIPickerViewDataSource, UIPickerViewDelegate{

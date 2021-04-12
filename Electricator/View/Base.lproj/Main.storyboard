@@ -53,8 +53,11 @@
                                     <constraint firstItem="1Wv-kJ-1c2" firstAttribute="leading" secondItem="EXz-29-nSX" secondAttribute="leading" constant="20" id="z0Y-Pu-5A5"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-fu-MK2">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-fu-MK2">
                                 <rect key="frame" x="18" y="329.33333333333331" width="354" height="31"/>
+                                <connections>
+                                    <action selector="slider:" destination="BYZ-38-t0r" eventType="valueChanged" id="4nG-6d-tMG"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Your Saving Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-ia-cuX">
                                 <rect key="frame" x="20" y="283" width="254" height="26.333333333333314"/>
@@ -179,6 +182,7 @@
                         <outlet property="applianceTableView" destination="yPf-gG-uG8" id="FOz-oE-aad"/>
                         <outlet property="billEstimationLabel" destination="1Wv-kJ-1c2" id="H7A-bh-xrW"/>
                         <outlet property="emptyView" destination="jtl-O0-j7f" id="78D-CU-rNW"/>
+                        <outlet property="slider" destination="UHl-fu-MK2" id="Cd7-fk-Uy5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
