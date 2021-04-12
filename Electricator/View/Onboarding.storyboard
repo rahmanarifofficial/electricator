@@ -81,19 +81,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's set you up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-bX-9YQ">
-                                <rect key="frame" x="16" y="102" width="259" height="41"/>
+                                <rect key="frame" x="16" y="67" width="259" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <color key="textColor" red="0.023529411764705882" green="0.13333333333333333" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your electricity data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgP-Z6-se7">
-                                <rect key="frame" x="16" y="151" width="152" height="20"/>
+                                <rect key="frame" x="16" y="116" width="152" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.63137254901960782" green="0.66274509803921566" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Current (Power Supply)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2T-3C-2Vd">
-                                <rect key="frame" x="16" y="213.5" width="228" height="21"/>
+                                <rect key="frame" x="16" y="178.5" width="228" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.023529411764705882" green="0.13333333333333333" blue="0.29019607843137252" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="FWh-Xg-M4B">
-                                <rect key="frame" x="249" y="180" width="145" height="88"/>
+                                <rect key="frame" x="249" y="145" width="145" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="hTa-st-IvR"/>
                                 </constraints>
@@ -130,7 +130,7 @@
                             <constraint firstItem="PgP-Z6-se7" firstAttribute="leading" secondItem="dBV-bh-sTp" secondAttribute="leading" constant="16" id="0RH-H2-aKq"/>
                             <constraint firstItem="dBV-bh-sTp" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PgP-Z6-se7" secondAttribute="trailing" symbolic="YES" id="1wr-ft-z01"/>
                             <constraint firstItem="FWh-Xg-M4B" firstAttribute="top" secondItem="rs9-bX-9YQ" secondAttribute="bottom" constant="37" id="3ge-fh-6Wm"/>
-                            <constraint firstItem="rs9-bX-9YQ" firstAttribute="top" secondItem="dBV-bh-sTp" secondAttribute="top" constant="58" id="4Xg-qR-tge"/>
+                            <constraint firstItem="rs9-bX-9YQ" firstAttribute="top" secondItem="dBV-bh-sTp" secondAttribute="top" constant="23" id="4Xg-qR-tge"/>
                             <constraint firstItem="rs9-bX-9YQ" firstAttribute="leading" secondItem="dBV-bh-sTp" secondAttribute="leading" constant="16" id="FnA-xm-ICM"/>
                             <constraint firstItem="y2T-3C-2Vd" firstAttribute="leading" secondItem="dBV-bh-sTp" secondAttribute="leading" constant="16" id="Jp9-DB-psC"/>
                             <constraint firstItem="FWh-Xg-M4B" firstAttribute="leading" secondItem="y2T-3C-2Vd" secondAttribute="trailing" constant="5" id="On6-OD-OA9"/>

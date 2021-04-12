@@ -65,7 +65,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             txt1.textColor = UIColor(rgb : 0x06224A) 
             txt1.text = titles[index]
 
-            let txt2 = UILabel(frame: CGRect(x: image.frame.minX - 45,y: self.view.center.y, width: 300, height: 200))
+            let txt2 = UILabel(frame: CGRect(x: txt1.frame.minX + 10, y: txt1.frame.maxY - 20, width: 300, height: 200))
             txt2.textAlignment = .center
             txt2.numberOfLines = 0
             txt2.font = UIFont.systemFont(ofSize: 22.0)
@@ -75,7 +75,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             
             if index == 2 {
                 let button = UIButton(frame: CGRect(x: self.view.center.x - 60, y: self.view.center.y + 170, width: 125, height: 40))
-                button.backgroundColor = UIColor(rgb: 0x06224A)
+                button.backgroundColor = Constants.darkBlue
                 button.setTitle("Get Started", for: .normal)
                 button.layer.cornerRadius = 7
                 button.isEnabled = true
@@ -83,10 +83,13 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
                 button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
                 
                 slide.addSubview(button)
+                
+                txt2.frame = txt2.frame.offsetBy(dx: 10, dy: 0)
             }
 
             slide.addSubview(txt1)
             slide.addSubview(txt2)
+            txt2.sizeToFit()
             slide.addSubview(image)
             scrollView.addSubview(slide)
         }
