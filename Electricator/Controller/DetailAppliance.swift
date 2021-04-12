@@ -44,11 +44,13 @@ class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSou
     func prepareApplianceData() {
         detailsDataAppliance[0] = appliance?.category ?? "Category not available"
         detailsDataAppliance[1] = appliance?.type ?? "Type not available"
-        detailsDataAppliance[2] = String(appliance?.power ?? -1)
+        detailsDataAppliance[2] = "\(appliance?.power ?? -1) W"
         detailsDataAppliance[3] = appliance?.name ?? "Name not available"
-        detailsDataAppliance[4] = String(appliance?.quantity ?? -1)
+        detailsDataAppliance[4] = "\(appliance?.quantity ?? -1) Unit"
         
-        detailsDataUsage[0] = "\(appliance!.duration / 3600) hour"
+        let duration = Int(appliance!.duration)
+        let hour = duration / 3600
+        detailsDataUsage[0] = "\(hour) hours \((duration - hour * 3600) / 60) minutes"
         detailsDataUsage[1] = (appliance?.repeatDay?.joined(separator: " "))!
     }
     

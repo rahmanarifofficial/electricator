@@ -179,7 +179,7 @@ extension DetailEdit: UIPickerViewDelegate, UIPickerViewDataSource {
         let hour = chosenDuration["hour"]!
         let minute = chosenDuration["minute"]!
         
-        durationTextField.text = "\(hour) hours \(minute) minutes"
+        durationTextField.text = "\(hour)h \(minute)m"
         durationTextField.endEditing(true)
     }
     
