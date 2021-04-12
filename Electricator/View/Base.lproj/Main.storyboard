@@ -637,7 +637,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-my-appliance" translatesAutoresizingMaskIntoConstraints="NO" id="PvH-QQ-FXc">
-                                <rect key="frame" x="-105" y="-13" width="600" height="212"/>
+                                <rect key="frame" x="-105" y="-13" width="600" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="ufQ-dQ-60P"/>
                                 </constraints>
@@ -670,7 +670,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWm-hr-KJF">
-                                <rect key="frame" x="0.0" y="143.33333333333334" width="390" height="315.66666666666663"/>
+                                <rect key="frame" x="0.0" y="200" width="390" height="268"/>
                                 <connections>
                                     <segue destination="FZv-sm-F0p" kind="embed" identifier="ApplianceListSegue" id="Vfo-Sr-4Kb"/>
                                 </connections>
@@ -678,20 +678,29 @@
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-appliance" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-ea-YGo">
                                 <rect key="frame" x="0.0" y="286" width="390" height="369"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appliances you wish to conserve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcN-dU-2SJ">
+                                <rect key="frame" x="20" y="170" width="262" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpp-0B-ucV">
+                                <rect key="frame" x="0.0" y="516" width="390" height="245"/>
+                                <connections>
+                                    <segue destination="t0Z-rV-Y9V" kind="embed" identifier="ConservedApplianceSegue" id="WRR-g8-04Y"/>
+                                </connections>
+                            </containerView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="conserve-guide" translatesAutoresizingMaskIntoConstraints="NO" id="uge-Fx-hUx">
+                                <rect key="frame" x="24" y="506" width="342" height="235"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appliances you don't wish to conserve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7p-2X-4bz">
                                 <rect key="frame" x="20" y="476" width="308.66666666666669" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpp-0B-ucV">
-                                <rect key="frame" x="0.0" y="505.66666666666669" width="390" height="255.33333333333331"/>
-                                <connections>
-                                    <segue destination="t0Z-rV-Y9V" kind="embed" identifier="ConservedApplianceSegue" id="WRR-g8-04Y"/>
-                                </connections>
-                            </containerView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="conserve-guide" translatesAutoresizingMaskIntoConstraints="NO" id="uge-Fx-hUx">
-                                <rect key="frame" x="24" y="521.66666666666663" width="342" height="189.33333333333337"/>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="no-conserved-appliance" translatesAutoresizingMaskIntoConstraints="NO" id="pBB-0g-kze">
+                                <rect key="frame" x="20" y="217" width="342" height="235"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cWy-2y-rNO"/>
@@ -699,32 +708,39 @@
                         <constraints>
                             <constraint firstItem="boG-1Z-H7i" firstAttribute="top" secondItem="CjN-Hv-pDg" secondAttribute="top" id="1jh-7V-OlQ"/>
                             <constraint firstItem="o7p-2X-4bz" firstAttribute="top" secondItem="I1O-ea-YGo" secondAttribute="bottom" constant="-179" id="C1d-sX-7uA"/>
-                            <constraint firstItem="uge-Fx-hUx" firstAttribute="top" secondItem="o7p-2X-4bz" secondAttribute="bottom" constant="24" id="EOO-bv-ndd"/>
+                            <constraint firstItem="cWy-2y-rNO" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OcN-dU-2SJ" secondAttribute="trailing" symbolic="YES" id="CBS-y5-LaC"/>
+                            <constraint firstItem="uge-Fx-hUx" firstAttribute="top" secondItem="o7p-2X-4bz" secondAttribute="bottom" constant="8.3333333333333144" id="EOO-bv-ndd"/>
                             <constraint firstItem="boG-1Z-H7i" firstAttribute="height" secondItem="cWy-2y-rNO" secondAttribute="height" multiplier="0.2" id="G05-hI-Mf7"/>
-                            <constraint firstItem="cWy-2y-rNO" firstAttribute="bottom" secondItem="uge-Fx-hUx" secondAttribute="bottom" constant="50" id="G3x-ec-obd"/>
+                            <constraint firstItem="cWy-2y-rNO" firstAttribute="bottom" secondItem="uge-Fx-hUx" secondAttribute="bottom" constant="20" id="G3x-ec-obd"/>
                             <constraint firstItem="I1O-ea-YGo" firstAttribute="trailing" secondItem="cWy-2y-rNO" secondAttribute="trailing" id="HDD-PN-DU2"/>
                             <constraint firstItem="cWy-2y-rNO" firstAttribute="trailing" secondItem="Bpp-0B-ucV" secondAttribute="trailing" id="Kx8-Pm-IO4"/>
                             <constraint firstItem="boG-1Z-H7i" firstAttribute="width" secondItem="cWy-2y-rNO" secondAttribute="width" id="MPO-6a-5iu"/>
                             <constraint firstItem="cWy-2y-rNO" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o7p-2X-4bz" secondAttribute="trailing" symbolic="YES" id="Ob2-Zo-Ac6"/>
                             <constraint firstItem="boG-1Z-H7i" firstAttribute="trailing" secondItem="cWy-2y-rNO" secondAttribute="trailing" id="Oem-BO-H6F"/>
+                            <constraint firstItem="OcN-dU-2SJ" firstAttribute="top" secondItem="PvH-QQ-FXc" secondAttribute="bottom" constant="8" symbolic="YES" id="PKb-1U-k4s"/>
                             <constraint firstItem="PvH-QQ-FXc" firstAttribute="top" secondItem="CjN-Hv-pDg" secondAttribute="topMargin" constant="-57" id="Q2Y-7b-BNc"/>
-                            <constraint firstItem="Bpp-0B-ucV" firstAttribute="top" secondItem="o7p-2X-4bz" secondAttribute="bottom" constant="8" symbolic="YES" id="QKs-Zo-Qar"/>
+                            <constraint firstItem="Bpp-0B-ucV" firstAttribute="top" secondItem="o7p-2X-4bz" secondAttribute="bottom" constant="18.333333333333314" id="QKs-Zo-Qar"/>
                             <constraint firstItem="I1O-ea-YGo" firstAttribute="trailing" secondItem="cWy-2y-rNO" secondAttribute="trailing" id="QfB-Za-NBU"/>
                             <constraint firstItem="TWm-hr-KJF" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" id="QtN-x7-heM"/>
+                            <constraint firstItem="pBB-0g-kze" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" constant="20" id="TBf-xg-M8x"/>
                             <constraint firstItem="uge-Fx-hUx" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" constant="24" id="VHJ-n2-Foy"/>
                             <constraint firstItem="I1O-ea-YGo" firstAttribute="top" secondItem="cWy-2y-rNO" secondAttribute="top" constant="242" id="Vdj-4u-7fi"/>
-                            <constraint firstItem="TWm-hr-KJF" firstAttribute="top" secondItem="boG-1Z-H7i" secondAttribute="bottom" id="W7C-Rc-rnM"/>
                             <constraint firstItem="I1O-ea-YGo" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" id="Xmr-L5-yGe"/>
                             <constraint firstItem="o7p-2X-4bz" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" constant="20" id="YFN-c9-rG2"/>
                             <constraint firstItem="PvH-QQ-FXc" firstAttribute="centerX" secondItem="boG-1Z-H7i" secondAttribute="centerX" id="afx-Ln-d1E"/>
+                            <constraint firstItem="cWy-2y-rNO" firstAttribute="bottom" secondItem="pBB-0g-kze" secondAttribute="bottom" constant="309" id="be5-Ns-zhQ"/>
                             <constraint firstItem="Bpp-0B-ucV" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" id="fMo-hh-msA"/>
                             <constraint firstItem="TWm-hr-KJF" firstAttribute="trailing" secondItem="cWy-2y-rNO" secondAttribute="trailing" id="gXi-gO-SNM"/>
                             <constraint firstItem="I1O-ea-YGo" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" id="k0Z-1K-O4K"/>
-                            <constraint firstItem="o7p-2X-4bz" firstAttribute="top" secondItem="TWm-hr-KJF" secondAttribute="bottom" constant="17" id="myp-eE-dKG"/>
+                            <constraint firstItem="o7p-2X-4bz" firstAttribute="top" secondItem="TWm-hr-KJF" secondAttribute="bottom" constant="8" id="myp-eE-dKG"/>
+                            <constraint firstItem="OcN-dU-2SJ" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" constant="20" id="ny3-Rs-jsP"/>
+                            <constraint firstItem="pBB-0g-kze" firstAttribute="top" secondItem="cWy-2y-rNO" secondAttribute="top" constant="173" id="oNS-Hc-oD3"/>
                             <constraint firstItem="cWy-2y-rNO" firstAttribute="trailing" secondItem="uge-Fx-hUx" secondAttribute="trailing" constant="24" id="p60-XX-HLf"/>
-                            <constraint firstItem="I1O-ea-YGo" firstAttribute="top" secondItem="PvH-QQ-FXc" secondAttribute="bottom" constant="87" id="pou-eY-CZO"/>
+                            <constraint firstItem="I1O-ea-YGo" firstAttribute="top" secondItem="PvH-QQ-FXc" secondAttribute="bottom" constant="124" id="pou-eY-CZO"/>
+                            <constraint firstItem="cWy-2y-rNO" firstAttribute="trailing" secondItem="pBB-0g-kze" secondAttribute="trailing" constant="28" id="sVy-On-EFq"/>
                             <constraint firstItem="boG-1Z-H7i" firstAttribute="leading" secondItem="cWy-2y-rNO" secondAttribute="leading" id="u3Z-hV-o1T"/>
                             <constraint firstItem="cWy-2y-rNO" firstAttribute="bottom" secondItem="Bpp-0B-ucV" secondAttribute="bottom" id="yt4-Dw-qpV"/>
+                            <constraint firstItem="TWm-hr-KJF" firstAttribute="top" secondItem="OcN-dU-2SJ" secondAttribute="bottom" constant="8" id="z9Q-dJ-C3E"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Appliance" largeTitleDisplayMode="always" id="avh-0M-KHg"/>
@@ -732,8 +748,10 @@
                     <connections>
                         <outlet property="appliancesContainer" destination="TWm-hr-KJF" id="vcF-Jd-wAy"/>
                         <outlet property="conserveGuideImage" destination="uge-Fx-hUx" id="nFM-Ko-H4c"/>
+                        <outlet property="conserveLabel" destination="OcN-dU-2SJ" id="Jow-1Y-hfH"/>
                         <outlet property="conservedAppliancesContainer" destination="Bpp-0B-ucV" id="VR0-Ia-pKB"/>
                         <outlet property="noApplianceImage" destination="I1O-ea-YGo" id="gWg-Kr-UQU"/>
+                        <outlet property="noConservedApplianceImage" destination="pBB-0g-kze" id="UlM-0P-7ea"/>
                         <outlet property="nonConserveLabel" destination="o7p-2X-4bz" id="olK-y3-ShP"/>
                         <outlet property="plusButton" destination="vGn-d2-qxi" id="Pno-TL-xWx"/>
                         <segue destination="Zbp-EN-P3f" kind="show" identifier="ApplianceDetailSegue" id="YHL-oy-V35"/>
@@ -741,14 +759,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C76-Wz-ahW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2476.811594202899" y="424.55357142857139"/>
+            <point key="canvasLocation" x="2475.3846153846152" y="424.4075829383886"/>
         </scene>
         <!--Appliances Table View Controller-->
         <scene sceneID="GF6-Hf-22A">
             <objects>
                 <tableViewController id="FZv-sm-F0p" customClass="AppliancesTableViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GOm-Os-Cdf">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="315.66666666666669"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="268"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -817,7 +835,7 @@
             <objects>
                 <tableViewController id="t0Z-rV-Y9V" customClass="UnconservedTableViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ubK-g3-ax8">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="255.33333333333334"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="245"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -945,17 +963,18 @@ to carry out daily activities at home.</string>
     </scenes>
     <resources>
         <image name="bg-bill-estimation" width="382" height="146"/>
-        <image name="bg-my-appliance" width="414" height="213"/>
+        <image name="bg-my-appliance" width="414" height="168"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="conserve-guide" width="316" height="253"/>
+        <image name="conserve-guide" width="321" height="251"/>
         <image name="ic-empty-appliance" width="328" height="211"/>
-        <image name="ic-television" width="512" height="512"/>
+        <image name="ic-television" width="1081" height="1080"/>
         <image name="icon-appliance" width="14" height="23"/>
         <image name="icon-plan" width="21" height="23"/>
         <image name="icon-plus" width="18" height="19"/>
         <image name="icon-settings" width="28" height="29"/>
         <image name="no-appliance" width="339" height="369"/>
+        <image name="no-conserved-appliance" width="357" height="227"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -16,7 +16,9 @@ protocol ApplianceActionsDelegate {
 
 class ApplianceListViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var conserveLabel: UILabel!
     @IBOutlet weak var noApplianceImage: UIImageView!
+    @IBOutlet weak var noConservedApplianceImage: UIImageView!
     @IBOutlet weak var conserveGuideImage: UIImageView!
     @IBOutlet weak var appliancesContainer: UIView!
     @IBOutlet weak var conservedAppliancesContainer: UIView!
@@ -52,6 +54,8 @@ class ApplianceListViewController: UIViewController {
         let noConservedAppliances = unconservedAppliances.isEmpty
         
         appliancesContainer.isHidden = noAppliances && noConservedAppliances
+        conserveLabel.isHidden = appliancesContainer.isHidden
+        noConservedApplianceImage.isHidden = !(!conserveLabel.isHidden && noAppliances)
         conservedAppliancesContainer.isHidden = noConservedAppliances
         noApplianceImage.isHidden = !(noAppliances && noConservedAppliances)
         nonConserveLabel.isHidden = !noApplianceImage.isHidden
