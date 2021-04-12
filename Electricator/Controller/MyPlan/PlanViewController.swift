@@ -174,7 +174,7 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApplianceSuggestionCell", for: indexPath) as! ApplianceTableViewCell
         
         let appliance = self.listAppliance[indexPath.row]
-        let icon = Constants.ApplianceImages[appliance.category!]!?.withTintColor(appliance.lock ? Constants.grey : Constants.darkBlue, renderingMode: .alwaysOriginal)
+        let icon = Constants.ApplianceImages[appliance.category!]!
         
         cell.imageItemAppliance.image = icon
         cell.textNameAppliance.text = appliance.name

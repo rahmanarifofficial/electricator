@@ -22,7 +22,7 @@ struct Constants {
         "Television": UIImage(named: "ic-television"),
         "Light": UIImage(named: "ic-light"),
         "Charger": UIImage(named: "ic-charger"),
-        "Water Dispenser": UIImage(named: "ic-water-heater"),
+        "Water Dispenser": UIImage(named: "ic-water-dispenser"),
         "Printer": UIImage(named: "ic-printer"),
         "Fan": UIImage(named: "ic-fan"),
         "Hair Dryer": UIImage(named: "ic-hair-dryer"),

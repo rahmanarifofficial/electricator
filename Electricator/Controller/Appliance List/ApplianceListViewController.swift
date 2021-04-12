@@ -118,7 +118,7 @@ extension ApplianceListViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ApplianceCell") as? ApplianceCell
             
             
-            let icon = Constants.ApplianceImages[appliances[indexPath.row].category!]!?.withTintColor(Constants.darkBlue, renderingMode: .alwaysOriginal)
+            let icon = Constants.ApplianceImages[appliances[indexPath.row].category!]!
             cell?.applianceImage.image = icon
             cell?.applianceNameLabel.text = appliances[indexPath.row].name
             cell?.applianceQuantityLabel.text = "\(appliances[indexPath.row].quantity) Unit"
@@ -127,7 +127,7 @@ extension ApplianceListViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UnconservedApplianceCell") as? UnconservedApplianceCell
             
-            let icon = Constants.ApplianceImages[unconservedAppliances[indexPath.row].category!]!?.withTintColor(Constants.darkBlue, renderingMode: .alwaysOriginal)
+            let icon = Constants.ApplianceImages[unconservedAppliances[indexPath.row].category!]!
             cell?.applianceImage.image = icon
             cell?.applianceNameLabel.text = unconservedAppliances[indexPath.row].name
             cell?.applianceQuantityLabel.text = "\(unconservedAppliances[indexPath.row].quantity) Unit"
