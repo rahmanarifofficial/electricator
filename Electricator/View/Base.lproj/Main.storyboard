@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="2476.811594202899" y="-340.17857142857139"/>
         </scene>
-        <!--Setting-->
+        <!--Settings-->
         <scene sceneID="iHR-g6-DeE">
             <objects>
-                <viewController id="FuG-eI-lIm" customClass="SettingViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="FuG-eI-lIm" customClass="SettingViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="56E-gO-UtS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,7 +242,7 @@
                         <viewLayoutGuide key="safeArea" id="YhS-dX-Rk3"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Setting" id="7yU-ql-SZW"/>
+                    <navigationItem key="navigationItem" title="Settings" id="7yU-ql-SZW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="notifView" destination="Hm1-Em-ePC" id="PEY-lC-rcb"/>
@@ -251,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="det-TO-XmE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3446.1538461538462" y="-334.12322274881512"/>
+            <point key="canvasLocation" x="3700" y="-341"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2YE-1a-a2M">
@@ -516,7 +516,7 @@
                                             <constraint firstAttribute="width" constant="140" id="dfL-np-tgu"/>
                                         </constraints>
                                         <color key="textColor" red="0.0078431372550000003" green="0.27058823529999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="repeatDidBeginEditingWithSender:" destination="odu-eR-Hae" eventType="editingDidBegin" id="flk-TC-i6V"/>
