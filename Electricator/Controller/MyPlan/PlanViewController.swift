@@ -13,6 +13,7 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var applianceTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var slider : UISlider!
+    @IBOutlet weak var maxSlider: UILabel!
     var listAppliance = [Appliance]()
     var choosenDuration = 0
     
@@ -60,9 +61,10 @@ class PlanViewController: UIViewController {
     }
     
     private func showLockDialog(_ item: Appliance, _ isLock:Bool){
+        let message = isLock ? "Lock" : "Unlock"
         let alert = UIAlertController(
-            title: "Lock Item",
-            message: "Are you sure want to lock this item’s usage suggestion?",
+            title: "\(message) item",
+            message: "Are you sure want to \(message) this item’s usage suggestion?",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
@@ -72,6 +74,7 @@ class PlanViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.dismiss(animated: true, completion: nil)
+            self.applianceTableView.reloadData()
         })
         
         self.present(alert, animated: true)
@@ -121,7 +124,7 @@ class PlanViewController: UIViewController {
         for item in listAppliance {
             billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.duration/3600), usage: Int(item.quantity)))
         }
-        billEstimationLabel.text = "Rp\(String(billEstimation))"
+        billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
     }
     
     private func calculateBillEstimation (myCurrent: Int, watt: Int, hours: Double, usage: Int) -> Double {
@@ -137,12 +140,10 @@ class PlanViewController: UIViewController {
     
     @IBAction func slider(_ sender: UISlider) {
         
+        maxSlider.text = "\(Int(sender.value))%"
         for appliance in listAppliance {
-            
             appliance.saveHour = appliance.duration - appliance.duration * Int32(sender.value)/100
-            
         }
-        
         
         applianceTableView.reloadData()
         
@@ -152,10 +153,16 @@ class PlanViewController: UIViewController {
         for item in listAppliance {
             billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity)))
         }
-        billEstimationLabel.text = "Rp\(String(billEstimation))"
+        billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
     }
     
-    
+    private func formatNominal(billEstimation: Int) -> String {
+        var formattedNominal = ""
+        let fmt = NumberFormatter()
+        fmt.numberStyle = .decimal
+        formattedNominal = fmt.string(from: NSNumber(value: billEstimation)) ?? ""
+        return formattedNominal
+    }
 }
 
 extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
@@ -183,11 +190,13 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
             cell.textNameAppliance.textColor = Constants.grey
             cell.textQuantityAppliance.textColor = Constants.grey
             cell.textHourAppliance.isUserInteractionEnabled = false
+            cell.textHourAppliance.textColor = Constants.grey
             cell.lockIcon.isHidden = false
         }else{
             cell.textNameAppliance.textColor = .black
             cell.textQuantityAppliance.textColor = .black
             cell.textHourAppliance.isUserInteractionEnabled = true
+            cell.textHourAppliance.textColor = #colorLiteral(red: 0.007843137255, green: 0.2705882353, blue: 0.6392156863, alpha: 1)
             cell.lockIcon.isHidden = true
         }
         return cell
@@ -195,12 +204,17 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let appliance = self.listAppliance[indexPath.row]
-        let lockAction = UIContextualAction(style: .normal, title: "Lock") { (action, view, onComplete) in
-            if(appliance.lock){
+        let isLock = appliance.lock
+        let message = !isLock ? "Lock" : "Unlock"
+        let lockAction = UIContextualAction(style: .normal, title: message) { (action, view, onComplete) in
+            if(isLock){
                 self.showLockDialog(appliance, false)
             } else{
                 self.showLockDialog(appliance, true)
             }
+        }
+        if isLock {
+            lockAction.backgroundColor = #colorLiteral(red: 0.007843137255, green: 0.2705882353, blue: 0.6392156863, alpha: 1)
         }
         
         return UISwipeActionsConfiguration(actions: [lockAction])

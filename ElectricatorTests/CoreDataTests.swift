@@ -99,7 +99,7 @@ class CoreDataTests: XCTestCase {
         let repeatDay = ["MON", "TUE"]
         let conserve = false
         
-        coreDataManager.updateAppliance(appliance: appliance, name: name!, category: category, type: type, power: power, quantity: quantity, duration: duration, repeatDay: repeatDay, conserve: conserve)
+        /** coreDataManager.updateAppliance(appliance: appliance, name: name!, category: category, type: type, power: power, quantity: quantity, duration: duration, repeatDay: repeatDay, conserve: conserve) */
         
         appliance = coreDataManager.fetchAppliances()[0]
         XCTAssertEqual(appliance.name, name)
