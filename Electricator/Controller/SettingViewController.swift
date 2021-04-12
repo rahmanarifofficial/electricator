@@ -138,11 +138,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         toolBar.sizeToFit()
         
         powerField.inputAccessoryView = toolBar
-        powerField.placeholder = "1300 VA"
-        powerField.textAlignment = .left
+        powerField.textAlignment = .center
         powerField.inputView = powerPicker
         powerField.font = UIFont.systemFont(ofSize: 17)
-        powerField.textColor = .lightGray
+        powerField.textColor = UIColor(rgb: 0x0245A3)
+        powerField.attributedPlaceholder = NSAttributedString(string: "1300 VA",
+                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x0245A3)])
+        powerField.layer.borderWidth = 1.0
+        powerField.layer.borderColor = UIColor.white.cgColor
         
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

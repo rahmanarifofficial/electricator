@@ -53,8 +53,11 @@
                                     <constraint firstItem="1Wv-kJ-1c2" firstAttribute="leading" secondItem="EXz-29-nSX" secondAttribute="leading" constant="20" id="z0Y-Pu-5A5"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-fu-MK2">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-fu-MK2">
                                 <rect key="frame" x="48.666666666666657" y="322.33333333333331" width="282.33333333333337" height="31"/>
+                                <connections>
+                                    <action selector="slider:" destination="BYZ-38-t0r" eventType="valueChanged" id="4nG-6d-tMG"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Your Saving Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-ia-cuX">
                                 <rect key="frame" x="20" y="276" width="254" height="26.333333333333314"/>
@@ -195,16 +198,18 @@
                         <outlet property="applianceTableView" destination="yPf-gG-uG8" id="FOz-oE-aad"/>
                         <outlet property="billEstimationLabel" destination="1Wv-kJ-1c2" id="H7A-bh-xrW"/>
                         <outlet property="emptyView" destination="jtl-O0-j7f" id="78D-CU-rNW"/>
+                        <outlet property="maxSlider" destination="ZcW-cq-0YF" id="CXZ-S9-kog"/>
+                        <outlet property="slider" destination="UHl-fu-MK2" id="Cd7-fk-Uy5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2475.3846153846152" y="-340.521327014218"/>
         </scene>
-        <!--Setting-->
+        <!--Settings-->
         <scene sceneID="iHR-g6-DeE">
             <objects>
-                <viewController id="FuG-eI-lIm" customClass="SettingViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="FuG-eI-lIm" customClass="SettingViewController" customModule="Electricator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="56E-gO-UtS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -254,7 +259,7 @@
                         <viewLayoutGuide key="safeArea" id="YhS-dX-Rk3"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Setting" id="7yU-ql-SZW"/>
+                    <navigationItem key="navigationItem" title="Settings" id="7yU-ql-SZW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="notifView" destination="Hm1-Em-ePC" id="PEY-lC-rcb"/>
@@ -263,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="det-TO-XmE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3446.1538461538462" y="-334.12322274881512"/>
+            <point key="canvasLocation" x="3700" y="-341"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2YE-1a-a2M">
@@ -528,7 +533,7 @@
                                             <constraint firstAttribute="width" constant="140" id="dfL-np-tgu"/>
                                         </constraints>
                                         <color key="textColor" red="0.0078431372550000003" green="0.27058823529999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="repeatDidBeginEditingWithSender:" destination="odu-eR-Hae" eventType="editingDidBegin" id="flk-TC-i6V"/>
@@ -755,8 +760,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appliance Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8s-Mk-jKc">
-                                            <rect key="frame" x="58" y="3" width="113" height="36.666666666666664"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <rect key="frame" x="58" y="3" width="130" height="36.666666666666664"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -824,8 +829,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appliance Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJM-hR-eVN">
-                                            <rect key="frame" x="58" y="3" width="113" height="36.666666666666664"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <rect key="frame" x="58" y="3" width="130" height="36.666666666666664"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>

@@ -12,7 +12,8 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var billEstimationLabel: UILabel!
     @IBOutlet weak var applianceTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
-    
+    @IBOutlet weak var slider : UISlider!
+    @IBOutlet weak var maxSlider: UILabel!
     var listAppliance = [Appliance]()
     var choosenDuration = 0
     
@@ -123,7 +124,7 @@ class PlanViewController: UIViewController {
         for item in listAppliance {
             billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.duration/3600), usage: Int(item.quantity)))
         }
-        billEstimationLabel.text = "Rp\(String(billEstimation))"
+        billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
     }
     
     private func calculateBillEstimation (myCurrent: Int, watt: Int, hours: Double, usage: Int) -> Double {
@@ -135,6 +136,32 @@ class PlanViewController: UIViewController {
             calculateBillEstimation = Double((Double(watt)*hours*Double(usage))/1000*1444.7)
         }
         return Double(calculateBillEstimation*30)
+    }
+    
+    @IBAction func slider(_ sender: UISlider) {
+        
+        maxSlider.text = "\(Int(sender.value))%"
+        for appliance in listAppliance {
+            appliance.saveHour = appliance.duration - appliance.duration * Int32(sender.value)/100
+        }
+        
+        applianceTableView.reloadData()
+        
+        listAppliance = CoreDataManager.manager.fetchAppliances()
+        let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
+        var billEstimation: Double = 0
+        for item in listAppliance {
+            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity)))
+        }
+        billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
+    }
+    
+    private func formatNominal(billEstimation: Int) -> String {
+        var formattedNominal = ""
+        let fmt = NumberFormatter()
+        fmt.numberStyle = .decimal
+        formattedNominal = fmt.string(from: NSNumber(value: billEstimation)) ?? ""
+        return formattedNominal
     }
 }
 
@@ -192,6 +219,9 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         
         return UISwipeActionsConfiguration(actions: [lockAction])
     }
+    
+    
+    
 }
 
 extension PlanViewController: UIPickerViewDataSource, UIPickerViewDelegate{

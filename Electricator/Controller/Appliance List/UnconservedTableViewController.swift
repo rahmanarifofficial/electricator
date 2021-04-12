@@ -18,6 +18,8 @@ class UnconservedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.tableFooterView = UIView()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -25,11 +27,12 @@ class UnconservedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let unconserve = UIContextualAction(style: .normal, title: "Conserve") { _,_,_ in
+        let conserve = UIContextualAction(style: .normal, title: "Conserve") { _,_,_ in
             self.actionsDelegate?.conserveAppliance(at: indexPath.row)
         }
+        conserve.backgroundColor = #colorLiteral(red: 0.007843137255, green: 0.2705882353, blue: 0.6392156863, alpha: 1)
         
-        return UISwipeActionsConfiguration(actions: [unconserve])
+        return UISwipeActionsConfiguration(actions: [conserve])
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

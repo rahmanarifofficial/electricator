@@ -151,7 +151,7 @@ extension ApplianceListViewController: AddApplianceControllerDelegate {
 
 extension ApplianceListViewController: ApplianceActionsDelegate {
     func showAlert(for title: String, yesAction rightHand: String, isDestructive: Bool, action: @escaping (UIAlertAction) -> Void) {
-        let alert = UIAlertController(title: "\(title) Item", message: "Are you sure want to \(title) this item ?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(title) Item", message: "Are you sure want to \(title.lowercased()) this item ?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.dismiss()
         }
