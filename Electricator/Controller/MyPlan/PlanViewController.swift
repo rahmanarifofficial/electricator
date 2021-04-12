@@ -111,7 +111,45 @@ class PlanViewController: UIViewController {
     @objc private func pickerDoneToolbarTapped(_ sender: UIBarButtonItem){
         print("row: \(sender.tag)")
         listAppliance[sender.tag].saveHour = Int32(choosenDuration * 3600)
-        // Add recalculate here
+        
+        let resultDelta = abs(listAppliance[sender.tag].duration - listAppliance[sender.tag].saveHour)
+        
+        let resultLock = resultDelta/(Int32(listAppliance.count)-1)
+        
+        var app = [Double](repeating: 0.0 , count: listAppliance.count)
+        
+        for index in listAppliance.indices {
+        
+            if index != sender.tag {
+                
+                app[index] = Double(Int16(listAppliance[index].saveHour)*listAppliance[index].power*listAppliance[index].quantity)
+                
+                if listAppliance[sender.tag].duration > listAppliance[sender.tag].saveHour {
+                    
+                    app[index] -= Double(resultLock)
+                    
+                }
+                
+                else {
+                    
+                    app[index] += Double(resultLock)
+
+                }
+                
+            }
+        }
+        
+        for index in listAppliance.indices {
+            
+            if index != sender.tag {
+                
+                listAppliance[index].saveHour = Int32(Int(Int16(app[index])/listAppliance[index].quantity*listAppliance[index].power))
+                
+            }
+            
+
+        }
+        
         applianceTableView.reloadData()
         
         self.view.endEditing(true)
@@ -141,8 +179,13 @@ class PlanViewController: UIViewController {
     @IBAction func slider(_ sender: UISlider) {
         
         maxSlider.text = "\(Int(sender.value))%"
+        
         for appliance in listAppliance {
+            
+            if !appliance.lock {
             appliance.saveHour = appliance.duration - appliance.duration * Int32(sender.value)/100
+                
+            }
         }
         
         applianceTableView.reloadData()
