@@ -60,9 +60,10 @@ class PlanViewController: UIViewController {
     }
     
     private func showLockDialog(_ item: Appliance, _ isLock:Bool){
+        let message = isLock ? "Lock" : "Unlock"
         let alert = UIAlertController(
-            title: "Lock Item",
-            message: "Are you sure want to lock this item’s usage suggestion?",
+            title: "\(message) item",
+            message: "Are you sure want to \(message) this item’s usage suggestion?",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
@@ -72,6 +73,7 @@ class PlanViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.dismiss(animated: true, completion: nil)
+            self.applianceTableView.reloadData()
         })
         
         self.present(alert, animated: true)
@@ -161,11 +163,13 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
             cell.textNameAppliance.textColor = Constants.grey
             cell.textQuantityAppliance.textColor = Constants.grey
             cell.textHourAppliance.isUserInteractionEnabled = false
+            cell.textHourAppliance.textColor = Constants.grey
             cell.lockIcon.isHidden = false
         }else{
             cell.textNameAppliance.textColor = .black
             cell.textQuantityAppliance.textColor = .black
             cell.textHourAppliance.isUserInteractionEnabled = true
+            cell.textHourAppliance.textColor = #colorLiteral(red: 0.007843137255, green: 0.2705882353, blue: 0.6392156863, alpha: 1)
             cell.lockIcon.isHidden = true
         }
         return cell
@@ -173,12 +177,17 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let appliance = self.listAppliance[indexPath.row]
-        let lockAction = UIContextualAction(style: .normal, title: "Lock") { (action, view, onComplete) in
-            if(appliance.lock){
+        let isLock = appliance.lock
+        let message = !isLock ? "Lock" : "Unlock"
+        let lockAction = UIContextualAction(style: .normal, title: message) { (action, view, onComplete) in
+            if(isLock){
                 self.showLockDialog(appliance, false)
             } else{
                 self.showLockDialog(appliance, true)
             }
+        }
+        if isLock {
+            lockAction.backgroundColor = #colorLiteral(red: 0.007843137255, green: 0.2705882353, blue: 0.6392156863, alpha: 1)
         }
         
         return UISwipeActionsConfiguration(actions: [lockAction])
