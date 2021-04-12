@@ -70,6 +70,21 @@ class DetailAppliance: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Delete appliance", message: "Are you sure to delete this appliance ?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            CoreDataManager.manager.deleteAppliance(appliance: self.appliance!)
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        
+        present(alert, animated: true)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
