@@ -152,7 +152,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(cancelPressed))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolBar.setItems([spacer, doneBtn], animated: true)
+        toolBar.setItems([cancel, spacer, doneBtn], animated: true)
         
         
     }
