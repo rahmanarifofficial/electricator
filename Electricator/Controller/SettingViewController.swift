@@ -17,14 +17,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     let powerPicker = UIPickerView()
     
     var powerData = ["450 VA", "900 VA", "1300 VA", "2200 VA", "3500 VA", "5500 VA", "6600 VA"]
+    var selectedPower: String?
     
     var switchState = true
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         
         notifView.delegate = self
@@ -39,6 +38,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        let current = CoreDataManager.manager.fetchHouse()?.powerSupply
+        powerField.text = "\(current!) VA"
         
         navigationController?.navigationBar.isHidden = false
     }
@@ -147,7 +149,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         powerField.layer.borderWidth = 1.0
         powerField.layer.borderColor = UIColor.white.cgColor
         
-        
+        let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(cancelPressed))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolBar.setItems([spacer, doneBtn], animated: true)
@@ -155,10 +157,15 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    @objc func cancelPressed() {
+        self.view.endEditing(true)
+    }
+    
     @objc func donePressed() {
         let house = CoreDataManager.manager.fetchHouse()
-        let power = Int16((powerField.text?.components(separatedBy: " ")[0])!)!
+        let power = Int16((selectedPower!.components(separatedBy: " ")[0]))!
         CoreDataManager.manager.updateHouse(to: power, for: house!)
+        self.powerField.text = selectedPower
         
         self.view.endEditing(true)
     }
@@ -180,7 +187,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        powerField.text = powerData[row]
+        selectedPower = powerData[row]
     }
     
     /*
