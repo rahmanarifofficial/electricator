@@ -207,6 +207,9 @@ extension AddApplianceViewController: UIPickerViewDelegate, UIPickerViewDataSour
 extension AddApplianceViewController: CategoryDataDelegate {
     func passData(data: String) {
         categoryTextField.text = data
+        
+        typeTextField.text = Constants.AppliancesDefaultData[data]?.type
+        powerTextField.text = "\(Constants.AppliancesDefaultData[data]?.power ?? 0)"
     }
 }
 
