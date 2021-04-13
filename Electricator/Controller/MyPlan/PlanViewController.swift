@@ -10,6 +10,7 @@ import UIKit
 class PlanViewController: UIViewController {
     
     @IBOutlet weak var billEstimationLabel: UILabel!
+    @IBOutlet weak var monthTextView: UILabel!
     @IBOutlet weak var applianceTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var slider : UISlider!
@@ -38,8 +39,21 @@ class PlanViewController: UIViewController {
             Appliance.conserve == true
         }
         applianceTableView.reloadData()
+        setupCurrentMonth()
         setupBillEstimation()
         setupView()
+    }
+    
+    private func setupCurrentMonth() {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now)
+        
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: now)
+        
+        monthTextView.text = "\(nameOfMonth) \(year)"
     }
     
     private func setupView(){
