@@ -231,14 +231,8 @@ class PlanViewController: UIViewController {
         }
         
         applianceTableView.reloadData()
-        
-        listAppliance = CoreDataManager.manager.fetchAppliances()
-        let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
-        var billEstimation: Double = 0
-        for item in listAppliance {
-            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity), usageDay: item.repeatDay!.count))
-        }
-        billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
+    
+        setupBillEstimation()
     }
     
     private func formatNominal(billEstimation: Int) -> String {
