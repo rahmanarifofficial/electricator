@@ -23,6 +23,8 @@ class PlanViewController: UIViewController {
         setupBillEstimation()
         setupView()
         setupTable()
+        
+        applianceTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
