@@ -84,6 +84,7 @@ class DetailEdit: UIViewController {
             }
         }
         repeatTextField.text = result
+        repeatDay = (appliance?.repeatDay)!
     }
     
     @objc func doneEditing() {
