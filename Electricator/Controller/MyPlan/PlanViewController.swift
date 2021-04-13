@@ -39,6 +39,7 @@ class PlanViewController: UIViewController {
         listAppliance = CoreDataManager.manager.fetchAppliances().filter { (Appliance) -> Bool in
             Appliance.conserve == true
         }
+
         applianceTableView.reloadData()
         setupCurrentMonth()
         setupBillEstimation()
@@ -198,10 +199,10 @@ class PlanViewController: UIViewController {
     }
     
     private func setupBillEstimation(){
-        listAppliance = CoreDataManager.manager.fetchAppliances()
+        let appliances = CoreDataManager.manager.fetchAppliances()
         let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
         var billEstimation: Double = 0
-        for item in listAppliance {
+        for item in appliances {
             billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity), usageDay: item.repeatDay!.count))
         }
         billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
