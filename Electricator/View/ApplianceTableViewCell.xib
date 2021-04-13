@@ -54,24 +54,23 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxu-aM-lld">
-                        <rect key="frame" x="354.5" y="21" width="35.5" height="20.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEZ-Vk-LmO">
+                        <rect key="frame" x="317" y="21" width="68.5" height="20"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5h" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6VG-xX-epc">
-                                <rect key="frame" x="0.0" y="0.0" width="17" height="20.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5h 25m" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6VG-xX-epc">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="0.0078431372549019607" green="0.27058823529411763" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5i8-AL-18P">
-                                <rect key="frame" x="17" y="5" width="18.5" height="11"/>
+                                <rect key="frame" x="50" y="5" width="18.5" height="10.5"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
-                    <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-lock" translatesAutoresizingMaskIntoConstraints="NO" id="ayi-lb-oiH">
-                        <rect key="frame" x="337" y="23" width="15" height="12"/>
+                    <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-lock" translatesAutoresizingMaskIntoConstraints="NO" id="ayi-lb-oiH">
+                        <rect key="frame" x="300" y="25" width="15" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="HEK-7O-42A"/>
                             <constraint firstAttribute="width" constant="15" id="yeM-gB-c88"/>
@@ -81,12 +80,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Tv8-dw-l8Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="861-Kb-iyf"/>
-                    <constraint firstItem="6VG-xX-epc" firstAttribute="leading" secondItem="ayi-lb-oiH" secondAttribute="trailing" constant="2.5" id="8IW-AK-poI"/>
+                    <constraint firstItem="6VG-xX-epc" firstAttribute="leading" secondItem="ayi-lb-oiH" secondAttribute="trailing" constant="2" id="9bd-81-1ZM"/>
                     <constraint firstAttribute="bottom" secondItem="xyi-5c-q7e" secondAttribute="bottom" constant="21" id="D2N-Ka-6GO"/>
                     <constraint firstItem="xyi-5c-q7e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="Gg5-87-NWq"/>
+                    <constraint firstItem="IEZ-Vk-LmO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="MCc-j0-Zd6"/>
                     <constraint firstItem="ICR-7y-gWb" firstAttribute="leading" secondItem="Tv8-dw-l8Z" secondAttribute="trailing" constant="10" id="MSI-sS-IJo"/>
-                    <constraint firstItem="gxu-aM-lld" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Q7y-e6-5i0"/>
-                    <constraint firstAttribute="bottom" secondItem="gxu-aM-lld" secondAttribute="bottom" constant="21" id="ViQ-cZ-n3u"/>
+                    <constraint firstAttribute="trailing" secondItem="IEZ-Vk-LmO" secondAttribute="trailing" constant="14.5" id="PbK-xB-0LR"/>
                     <constraint firstAttribute="bottom" secondItem="ICR-7y-gWb" secondAttribute="bottom" constant="12" id="XOX-Hx-5qp"/>
                     <constraint firstItem="ICR-7y-gWb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="c7q-SH-cLC"/>
                     <constraint firstItem="Tv8-dw-l8Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dpf-og-gPx"/>
@@ -94,8 +93,6 @@
                     <constraint firstAttribute="trailing" secondItem="xyi-5c-q7e" secondAttribute="trailing" constant="10" id="kAM-P3-XbA"/>
                     <constraint firstItem="ICR-7y-gWb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n84-Gw-2f9"/>
                     <constraint firstItem="ayi-lb-oiH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="pb0-a7-57j"/>
-                    <constraint firstAttribute="trailing" secondItem="gxu-aM-lld" secondAttribute="trailing" constant="10" id="sNX-3u-RtQ"/>
-                    <constraint firstItem="gxu-aM-lld" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="ugF-hT-F0m"/>
                     <constraint firstItem="xyi-5c-q7e" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zQG-sv-ILX"/>
                 </constraints>
                 <variation key="default">
@@ -113,7 +110,6 @@
                 <outlet property="textHourAppliance" destination="6VG-xX-epc" id="hPy-ai-4uJ"/>
                 <outlet property="textNameAppliance" destination="fb3-iD-Wk2" id="xSl-8F-KV1"/>
                 <outlet property="textQuantityAppliance" destination="f1u-GZ-Cnu" id="YzS-43-bDY"/>
-                <outlet property="unlockHourViewAppliance" destination="gxu-aM-lld" id="tK6-AQ-OHi"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="84.375"/>
         </tableViewCell>

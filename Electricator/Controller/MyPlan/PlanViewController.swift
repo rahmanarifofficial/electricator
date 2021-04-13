@@ -16,7 +16,8 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var slider : UISlider!
     @IBOutlet weak var maxSlider: UILabel!
     var listAppliance = [Appliance]()
-    var choosenDuration = 0
+    var chosenHour = 0
+    var chosenMinute = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +101,13 @@ class PlanViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    func convertToHourMinutes(from data: Int32) -> (String, String) {
+        let hour = data / 3600
+        let second = (data - hour * 3600) / 60
+        
+        return (String(hour), String(second))
+    }
+    
     func durationPicker() -> UIPickerView {
         let picker = UIPickerView()
         picker.dataSource = self
@@ -135,7 +143,7 @@ class PlanViewController: UIViewController {
     }
     
     func adjustApplianceUsage(accordingTo customizedIndex: Int, newUsage usage: Int) {
-        let deltaTime = (listAppliance[customizedIndex].saveHour / 3600) - Int32(usage)
+        let deltaTime = (listAppliance[customizedIndex].saveHour) - Int32(usage)
         let offsetUsage = deltaTime * Int32(listAppliance[customizedIndex].power) * Int32(listAppliance[customizedIndex].quantity)
         let applianceUsageOffset = offsetUsage / Int32(listAppliance.count - 1)
         
@@ -146,7 +154,7 @@ class PlanViewController: UIViewController {
                 let currentAppliance = listAppliance[i]
                 let qty = Int32(currentAppliance.quantity)
                 let power = Int32(currentAppliance.power)
-                let duration = Int32(currentAppliance.saveHour / 3600)
+                let duration = currentAppliance.saveHour //Int32(currentAppliance.saveHour / 3600)
                 
                 // Calculate current electricity usage without customized appliance intervention
                 let currentApplianceUsage = duration * power * qty
@@ -159,10 +167,10 @@ class PlanViewController: UIViewController {
                     showUnableToAdjustAlert()
                     return
                 }
-                adjustedUsage = (adjustedUsage > 24 ? 24 : adjustedUsage)
+                adjustedUsage = (adjustedUsage / 3600 > 24 ? 24 * 3600: adjustedUsage)
                 
                 // Save the data to dictionary
-                adjustedUsages[i] = Int32(adjustedUsage * 3600)
+                adjustedUsages[i] = Int32(adjustedUsage)
             }
         }
         
@@ -171,10 +179,11 @@ class PlanViewController: UIViewController {
             listAppliance[index].saveHour = usage
         }
         
-        listAppliance[customizedIndex].saveHour = Int32(choosenDuration * 3600)
+        listAppliance[customizedIndex].saveHour = Int32(chosenHour + chosenMinute)
         
         applianceTableView.reloadData()
         setupBillEstimation()
+        CoreDataManager.manager.saveContext()
     }
     
     @objc func pickerCancelToolbarTapped(_ sender: UIBarButtonItem){
@@ -183,7 +192,7 @@ class PlanViewController: UIViewController {
     
     @objc func pickerDoneToolbarTapped(_ sender: UIBarButtonItem){
         let customizedIndex = sender.tag
-        adjustApplianceUsage(accordingTo: customizedIndex, newUsage: choosenDuration)
+        adjustApplianceUsage(accordingTo: customizedIndex, newUsage: chosenHour + chosenMinute)
         
         self.view.endEditing(true)
     }
@@ -193,20 +202,20 @@ class PlanViewController: UIViewController {
         let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
         var billEstimation: Double = 0
         for item in listAppliance {
-            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity)))
+            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity), usageDay: item.repeatDay!.count))
         }
         billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
     }
     
-    private func calculateBillEstimation (myCurrent: Int, watt: Int, hours: Double, usage: Int) -> Double {
+    private func calculateBillEstimation (myCurrent: Int, watt: Int, hours: Double, usage: Int, usageDay: Int) -> Double {
         
         var calculateBillEstimation: Double = 0
         if myCurrent <= 900  {
-            calculateBillEstimation = Double((Double(watt)*hours*Double(usage))/1000*1352)
+            calculateBillEstimation = Double((Double(watt) *  hours * Double(usage) * Double(usageDay)) / 1000 * 1352)
         } else if myCurrent > 900 {
-            calculateBillEstimation = Double((Double(watt)*hours*Double(usage))/1000*1444.7)
+            calculateBillEstimation = Double((Double(watt) * hours * Double(usage) * Double(usageDay)) / 1000 * 1444.7)
         }
-        return Double(calculateBillEstimation*30)
+        return Double(calculateBillEstimation * 4)
     }
     
     @IBAction func slider(_ sender: UISlider) {
@@ -226,7 +235,7 @@ class PlanViewController: UIViewController {
         let myCurrent = CoreDataManager.manager.fetchHouse()?.powerSupply ?? 0
         var billEstimation: Double = 0
         for item in listAppliance {
-            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity)))
+            billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity), usageDay: item.repeatDay!.count))
         }
         billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
     }
@@ -254,9 +263,9 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
         cell.imageItemAppliance.image = icon
         cell.textNameAppliance.text = appliance.name
         cell.textQuantityAppliance.text = String("\(appliance.quantity) Unit")
-        let duration = appliance.saveHour == -1 ? appliance.duration : appliance.saveHour
-        cell.textHourAppliance.text = String("\(duration / 3600 )h")
-        cell.textFinalHourAppliance.text = String("\(appliance.duration / 3600)h")
+        
+        let time = convertToHourMinutes(from: appliance.saveHour)
+        cell.textHourAppliance.text = String("\(time.0)h \(time.1)m")
         cell.textHourAppliance.tag = indexPath.row
         cell.textHourAppliance.inputView = durationPicker()
         cell.textHourAppliance.inputAccessoryView = durationToolbarPicker(cell.textHourAppliance)
@@ -301,19 +310,38 @@ extension PlanViewController : UITableViewDataSource, UITableViewDelegate {
 
 extension PlanViewController: UIPickerViewDataSource, UIPickerViewDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Constants.HourFromOne.count
+        if component == 0 {
+            return Constants.HourFromOne.count
+        } else {
+            if chosenHour / 3600 == 24 {
+                return 1
+            }
+            return Constants.MinuteFromZero.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String("\(Constants.HourFromOne[row]) Hour")
+        if component == 0 {
+            return String("\(Constants.HourFromOne[row]) Hour")
+        } else {
+            if chosenHour / 3600 == 24 {
+                return String("0 Minute")
+            }
+            return String("\(Constants.MinuteFromZero[row]) Minute")
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        choosenDuration = Constants.HourFromOne[row]
+        if component == 0 {
+            chosenHour = Constants.HourFromOne[row] * 3600
+            pickerView.reloadComponent(1)
+        } else {
+            chosenMinute = Constants.MinuteFromZero[row] * 60
+        }
     }
     
 }
