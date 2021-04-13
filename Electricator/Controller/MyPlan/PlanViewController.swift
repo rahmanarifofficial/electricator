@@ -205,7 +205,8 @@ class PlanViewController: UIViewController {
         for item in appliances {
             billEstimation += (calculateBillEstimation(myCurrent: Int(myCurrent), watt: Int(item.power), hours: Double(item.saveHour/3600), usage: Int(item.quantity), usageDay: item.repeatDay!.count))
         }
-        billEstimationLabel.text = "Rp\(formatNominal(billEstimation: Int(billEstimation)))"
+        let bill = "Rp\(formatNominal(billEstimation: Int(billEstimation)))".replacingOccurrences(of: ",", with: ".")
+        billEstimationLabel.text = bill
     }
     
     private func calculateBillEstimation (myCurrent: Int, watt: Int, hours: Double, usage: Int, usageDay: Int) -> Double {
